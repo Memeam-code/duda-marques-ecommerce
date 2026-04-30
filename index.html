@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">DUDA MARQUES</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ░░ ANNOUNCEMENT BAR ░░ -->
+  <div class="announcement-bar" id="announcement-bar">
+    <div class="announcement-track">
+      <span>FRETE GRÁTIS ACIMA DE R$299</span>
+      <span class="dot">·</span>
+      <span>PRODUTOS PROFISSIONAIS DE ALTA PERFORMANCE</span>
+      <span class="dot">·</span>
+      <span>FRETE GRÁTIS ACIMA DE R$299</span>
+      <span class="dot">·</span>
+      <span>ATENDIMENTO VIA WHATSAPP</span>
+      <span class="dot">·</span>
+    </div>
+  </div>
+
+  <!-- ░░ HEADER ░░ -->
+  <header class="header" id="header">
+    <div class="header-inner container">
+
+      <!-- Hamburger (mobile) -->
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Logo -->
+      <div class="header-logo">
+        <a href="#" class="logo-link">
+          <span class="logo-name" id="logo-name">DUDA MARQUES</span>
+          <span class="logo-sub">COSMÉTICOS PROFISSIONAIS</span>
+        </a>
+      </div>
+
+      <!-- Cart -->
+      <button class="cart-btn" id="cart-btn" aria-label="Abrir carrinho">
+        <svg class="cart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="cart-badge" id="cart-badge" aria-live="polite">0</span>
+      </button>
+    </div>
+
+    <!-- Desktop Nav -->
+    <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+      <ul class="nav-list" id="nav-list"><!-- JS --></ul>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
+      <div class="mobile-nav-header">
+        <span class="logo-name" id="mobile-logo">DUDA MARQUES</span>
+        <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Fechar menu">✕</button>
+      </div>
+      <ul class="mobile-nav-list" id="mobile-nav-list"><!-- JS --></ul>
+    </nav>
+  </header>
+
+  <!-- ░░ MAIN ░░ -->
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" id="hero" aria-label="Banner principal">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Profissional & Exclusivo</span>
+        <h1 class="hero-title">Transforme seus<br>fios com ciência</h1>
+        <p class="hero-sub">Cosméticos de alta performance para resultados extraordinários</p>
+        <div class="hero-ctas">
+          <a href="#colecoes" class="btn btn-light">VER COLEÇÃO</a>
+          <a href="https://wa.me/5521985873917" target="_blank" class="btn btn-outline-light">FALAR CONOSCO</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLECTIONS CAROUSEL -->
+    <section class="collections-section" id="colecoes" aria-label="Linhas de produtos">
+      <div class="container">
+        <h2 class="section-title">NOSSAS LINHAS</h2>
+        <p class="section-subtitle">Escolha a linha ideal para o seu tipo de cabelo</p>
+        <div class="carousel-wrapper" role="region" aria-label="Carrossel de linhas">
+          <button class="carousel-arrow carousel-prev" id="carousel-prev" aria-label="Anterior">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="carousel-track" id="carousel-track"><!-- JS --></div>
+          <button class="carousel-arrow carousel-next" id="carousel-next" aria-label="Próximo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT SECTIONS (geradas por JS) -->
+    <div id="product-sections"></div>
+
+  </main>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer class="footer" aria-label="Rodapé">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <span class="footer-logo" id="footer-logo-text">DUDA MARQUES</span>
+          <p class="footer-tagline">Cosméticos profissionais de alta performance para transformar seus fios.</p>
+          <div class="footer-socials">
+            <a href="https://wa.me/5521985873917" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+            <a href="#" class="social-btn instagram" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Linhas</h4>
+          <ul id="footer-links"><!-- JS --></ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Informações</h4>
+          <ul>
+            <li><a href="#">Sobre Nós</a></li>
+            <li><a href="#">Como Comprar</a></li>
+            <li><a href="#">Trocas e Devoluções</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Contato</h4>
+          <p><strong>WhatsApp</strong><br><a href="https://wa.me/5521985873917" id="footer-whatsapp">(21) 98587-3917</a></p>
+          <p><strong>Horário</strong><br>Seg–Sex: 9h às 18h</p>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <p id="footer-copy">&copy; 2024 DUDA MARQUES · Todos os direitos reservados</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ░░ CART DRAWER ░░ -->
+  <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-label="Carrinho de compras" aria-modal="true" aria-hidden="true">
+    <div class="cart-drawer-header">
+      <h3>Meu Carrinho</h3>
+      <button class="drawer-close" id="cart-close" aria-label="Fechar carrinho">✕</button>
+    </div>
+    <div class="cart-drawer-body" id="cart-body"><!-- JS --></div>
+    <div class="cart-drawer-footer" id="cart-footer"><!-- JS --></div>
+  </aside>
+
+  <!-- ░░ CHECKOUT MODAL ░░ -->
+  <div class="modal-overlay" id="checkout-overlay" aria-hidden="true">
+    <div class="checkout-modal" id="checkout-modal" role="dialog" aria-label="Finalizar pedido" aria-modal="true">
+      <button class="modal-close" id="checkout-close" aria-label="Fechar checkout">✕</button>
+
+      <!-- Steps Indicator -->
+      <div class="steps-bar" id="steps-bar" aria-label="Etapas do checkout">
+        <div class="step-item active" data-step="1">
+          <div class="step-dot">1</div>
+          <span>Dados</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" data-step="2">
+          <div class="step-dot">2</div>
+          <span>Envio</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" data-step="3">
+          <div class="step-dot">3</div>
+          <span>Revisão</span>
+        </div>
+      </div>
+
+      <!-- Step 1: Personal + Address -->
+      <div class="checkout-step" id="step-1">
+        <h2 class="checkout-title">Dados & Endereço</h2>
+        <form id="form-step1" novalidate autocomplete="on">
+          <div class="field-group">
+            <label for="f-nome">Nome Completo <span class="req">*</span></label>
+            <input type="text" id="f-nome" name="nome" placeholder="Seu nome completo" autocomplete="name" required />
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="f-email">E-mail <span class="req">*</span></label>
+              <input type="email" id="f-email" name="email" placeholder="seu@email.com" autocomplete="email" required />
+            </div>
+            <div class="field-group">
+              <label for="f-tel">WhatsApp <span class="req">*</span></label>
+              <input type="tel" id="f-tel" name="tel" placeholder="(21) 99999-9999" autocomplete="tel" required />
+            </div>
+          </div>
+          <div class="field-divider"><span>Endereço de Entrega</span></div>
+          <div class="field-row">
+            <div class="field-group cep-group">
+              <label for="f-cep">CEP <span class="req">*</span></label>
+              <div class="cep-input-row">
+                <input type="text" id="f-cep" name="cep" placeholder="00000-000" maxlength="9" autocomplete="postal-code" required />
+                <button type="button" class="btn-cep" id="btn-cep">Buscar</button>
+              </div>
+              <small class="cep-msg" id="cep-msg"></small>
+            </div>
+            <div class="field-group">
+              <label for="f-num">Número <span class="req">*</span></label>
+              <input type="text" id="f-num" name="numero" placeholder="Nº" required />
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="f-rua">Rua / Logradouro <span class="req">*</span></label>
+            <input type="text" id="f-rua" name="rua" placeholder="Nome da rua" autocomplete="address-line1" required />
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="f-bairro">Bairro <span class="req">*</span></label>
+              <input type="text" id="f-bairro" name="bairro" placeholder="Bairro" required />
+            </div>
+            <div class="field-group">
+              <label for="f-comp">Complemento</label>
+              <input type="text" id="f-comp" name="complemento" placeholder="Apto, bloco..." autocomplete="address-line2" />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-group field-grow">
+              <label for="f-cidade">Cidade <span class="req">*</span></label>
+              <input type="text" id="f-cidade" name="cidade" placeholder="Cidade" autocomplete="address-level2" required />
+            </div>
+            <div class="field-group field-xs">
+              <label for="f-uf">UF <span class="req">*</span></label>
+              <input type="text" id="f-uf" name="uf" placeholder="UF" maxlength="2" autocomplete="address-level1" required />
+            </div>
+          </div>
+          <div class="step-actions">
+            <button type="submit" class="btn btn-primary btn-full">CONTINUAR →</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 2: Shipping -->
+      <div class="checkout-step hidden" id="step-2">
+        <h2 class="checkout-title">Forma de Envio</h2>
+        <div class="shipping-opts" id="shipping-opts">
+          <label class="shipping-card" for="opt-pac">
+            <input type="radio" name="frete" id="opt-pac" value="pac" checked />
+            <div class="shipping-card-inner">
+              <span class="shipping-icon">📦</span>
+              <div class="shipping-info">
+                <strong>PAC</strong>
+                <small>5 a 10 dias úteis</small>
+              </div>
+              <span class="shipping-price" id="price-pac">R$ 19,90</span>
+            </div>
+          </label>
+          <label class="shipping-card" for="opt-sedex">
+            <input type="radio" name="frete" id="opt-sedex" value="sedex" />
+            <div class="shipping-card-inner">
+              <span class="shipping-icon">🚀</span>
+              <div class="shipping-info">
+                <strong>SEDEX</strong>
+                <small>1 a 3 dias úteis</small>
+              </div>
+              <span class="shipping-price" id="price-sedex">R$ 39,90</span>
+            </div>
+          </label>
+        </div>
+        <div class="order-mini-summary" id="order-summary-2"><!-- JS --></div>
+        <div class="step-actions two">
+          <button class="btn btn-ghost" id="btn-back-1">← Voltar</button>
+          <button class="btn btn-primary" id="btn-next-3">CONTINUAR →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Review -->
+      <div class="checkout-step hidden" id="step-3">
+        <h2 class="checkout-title">Revisão do Pedido</h2>
+        <div class="review-block" id="review-block"><!-- JS --></div>
+        <div class="step-actions two">
+          <button class="btn btn-ghost" id="btn-back-2">← Voltar</button>
+          <button class="btn btn-confirm" id="btn-confirm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            CONFIRMAR PEDIDO
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ░░ SUCCESS SCREEN ░░ -->
+  <div class="success-overlay hidden" id="success-overlay" aria-hidden="true">
+    <div class="success-box">
+      <div class="success-check" id="success-check">
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+          <circle cx="36" cy="36" r="34" stroke="var(--green)" stroke-width="3"/>
+          <path d="M20 36l11 11 21-21" stroke="var(--green)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2>Pedido Enviado!</h2>
+      <p>Você foi redirecionado para o WhatsApp para confirmar e finalizar o pagamento.</p>
+      <p class="success-note">Nosso time responderá em breve 💛</p>
+      <button class="btn btn-primary" id="btn-success-close">CONTINUAR COMPRANDO</button>
+    </div>
+  </div>
+
+  <!-- ░░ TOAST ░░ -->
+  <div class="toast-wrap" id="toast-wrap" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ░░ WHATSAPP FLOAT ░░ -->
+  <a class="wa-float" href="https://wa.me/5521985873917" target="_blank" id="wa-float" aria-label="Fale conosco no WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-tip">Fale conosco!</span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
