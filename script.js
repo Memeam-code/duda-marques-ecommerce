@@ -37,18 +37,53 @@ const LINHAS = [
     cor:     "#DDE8F0",
     emoji:   "🧴",
     produtos: [
-      { id: 1, nome: "Shampoo E.D.T.A",     desc: "Remove resíduos minerais e purifica os fios", tamanho: "1 L", preco: 50.00, img: "" },
-      { id: 2, nome: "Shampoo Hidratante",  desc: "Hidratação profunda para cabelos secos",       tamanho: "1 L", preco: 50.00, img: "" },
-      { id: 3, nome: "Shampoo Anti Caspa",  desc: "Elimina a caspa e controla a oleosidade",      tamanho: "1 L", preco: 50.00, img: "" },
+      {
+        id: 1, nome: "Shampoo E.D.T.A",
+        desc: "Remove resíduos minerais e purifica os fios",
+        variantes: [
+          { sku: "1-1L",   tamanho: "1 L",    preco: 50.00, img: "images/shampoo-edta-1L.jpeg" },
+          { sku: "1-300",  tamanho: "300 ml", preco: 25.00, img: "images/shampoo-edta-300ml.jpeg" },
+        ]
+      },
+      {
+        id: 2, nome: "Shampoo Hidratante",
+        desc: "Hidratação profunda para cabelos secos",
+        variantes: [
+          { sku: "2-1L",   tamanho: "1 L",    preco: 50.00, img: "images/shampoo-hidratante-1L.jpeg" },
+          { sku: "2-300",  tamanho: "300 ml", preco: 25.00, img: "images/shampoo-hidratante-300ml.jpeg" },
+        ]
+      },
+      {
+        id: 3, nome: "Shampoo Anti Caspa",
+        desc: "Elimina a caspa e controla a oleosidade",
+        variantes: [
+          { sku: "3-1L",   tamanho: "1 L",    preco: 50.00, img: "images/shampoo-anticaspa-1L.jpeg" },
+          { sku: "3-300",  tamanho: "300 ml", preco: 25.00, img: "images/shampoo-anticaspa-300ml.jpeg" },
+        ]
+      },
       {
         id: 4,
         nome: "Shampoo Mentolado",
         desc: "Limpeza eficaz com sensação refrescante de menta. Auxilia o crescimento e saúde dos fios.",
         classe: "frio",
+        detalhes: "Com extrato de menta e óleo essencial natural, este shampoo proporciona uma limpeza profunda enquanto refresca o couro cabeludo. Ideal para cabelos oleosos e quem busca uma sensação revigorante a cada lavagem.",
+        beneficios: [
+          "Limpeza profunda dos fios",
+          "Sensação refrescante e estimulante",
+          "Auxilia no crescimento saudável dos fios",
+          "Controla a oleosidade do couro cabeludo",
+        ],
+        modoUso: "Aplique no cabelo úmido, massageie suavemente o couro cabeludo, deixe agir por 1 a 2 minutos para sentir a sensação refrescante e enxágue.",
         variantes: [
           { sku: "4-1L",   tamanho: "1 L",    preco: 100.00, img: "images/shampoo-mentolado-1L.jpeg" },
           { sku: "4-300",  tamanho: "300 ml", preco: 50.00,  img: "images/shampoo-mentolado-300ml.jpeg" },
         ]
+      },
+      {
+        id: 5, nome: "Shampoo Matizador",
+        desc: "Neutraliza tons amarelados em cabelos loiros e grisalhos",
+        tamanho: "300 ml", preco: 50.00,
+        img: "images/shampoo-matizador-300ml.jpeg"
       },
     ],
   },
@@ -60,14 +95,62 @@ const LINHAS = [
     cor:     "#F0DDE8",
     emoji:   "✨",
     produtos: [
-      { id: 5,  nome: "Máscara Lipídica",                  desc: "Nutrição lipídica profunda",                       tamanho: "1 kg", preco: 50.00, img: "" },
-      { id: 6,  nome: "Máscara Hídrica",                   desc: "Hidratação profunda em até 3 minutos",              tamanho: "1 kg", preco: 50.00, img: "" },
-      { id: 7,  nome: "Máscara Reconstrutora",             desc: "Reconstrói a fibra capilar por dentro",             tamanho: "1 kg", preco: 50.00, img: "" },
-      { id: 8,  nome: "Máscara Matizadora",                desc: "Neutraliza tons amarelados e avermelhados",        tamanho: "1 kg", preco: 50.00, img: "" },
-      { id: 9,  nome: "Máscara para Cabelos Afro",         desc: "Nutrição especial para cachos e crespos",          tamanho: "1 kg", preco: 50.00, img: "" },
-      { id: 10, nome: "Máscara Super Reconstrutora",       desc: "Restauração intensiva para fios muito danificados", tamanho: "1 kg", preco: 80.00, img: "" },
-      { id: 11, nome: "Máscara Super Hidratante",          desc: "Hidratação intensa para fios desidratados",        tamanho: "1 kg", preco: 80.00, img: "" },
-      { id: 12, nome: "Máscara para Cabelos Super Ressecados", desc: "Restaura fios extremamente ressecados",          tamanho: "1 kg", preco: 50.00, img: "" },
+      {
+        id: 6, nome: "Máscara Lipídica", desc: "Nutrição lipídica profunda",
+        variantes: [
+          { sku: "6-1K",   tamanho: "1 kg",   preco: 50.00, img: "images/mascara-lipidica-1kg.jpeg" },
+          { sku: "6-650",  tamanho: "650 ml", preco: 35.00, img: "images/mascara-lipidica-650ml.jpeg" },
+        ]
+      },
+      {
+        id: 7, nome: "Máscara Hídrica", desc: "Hidratação profunda em até 3 minutos",
+        variantes: [
+          { sku: "7-1K",   tamanho: "1 kg",   preco: 50.00, img: "images/mascara-hidrica-1kg.jpeg" },
+          { sku: "7-650",  tamanho: "650 ml", preco: 35.00, img: "images/mascara-hidrica-650ml.jpeg" },
+        ]
+      },
+      {
+        id: 8, nome: "Máscara Reconstrutora", desc: "Reconstrói a fibra capilar por dentro",
+        variantes: [
+          { sku: "8-1K",   tamanho: "1 kg",   preco: 50.00, img: "images/mascara-reconstrutora-1kg.jpeg" },
+          { sku: "8-650",  tamanho: "650 ml", preco: 35.00, img: "images/mascara-reconstrutora-650ml.jpeg" },
+        ]
+      },
+      {
+        id: 9, nome: "Máscara Matizadora", desc: "Neutraliza tons amarelados e avermelhados",
+        variantes: [
+          { sku: "9-1K",   tamanho: "1 kg",   preco: 50.00, img: "images/mascara-matizadora-1kg.jpeg" },
+          { sku: "9-650",  tamanho: "650 ml", preco: 35.00, img: "images/mascara-matizadora-650ml.jpeg" },
+        ]
+      },
+      {
+        id: 10, nome: "Máscara para Cabelos Afro", desc: "Nutrição especial para cachos e crespos",
+        variantes: [
+          { sku: "10-1K",  tamanho: "1 kg",   preco: 50.00, img: "images/mascara-afro-1kg.jpeg" },
+          { sku: "10-650", tamanho: "650 ml", preco: 35.00, img: "images/mascara-afro-650ml.jpeg" },
+        ]
+      },
+      {
+        id: 11, nome: "Máscara Super Reconstrutora", desc: "Restauração intensiva para fios muito danificados",
+        variantes: [
+          { sku: "11-1K",  tamanho: "1 kg",   preco: 80.00, img: "images/mascara-super-reconstrutora-1kg.jpeg" },
+          { sku: "11-650", tamanho: "650 ml", preco: 55.00, img: "images/mascara-super-reconstrutora-650ml.jpeg" },
+        ]
+      },
+      {
+        id: 12, nome: "Máscara Super Hidratante", desc: "Hidratação intensa para fios desidratados",
+        variantes: [
+          { sku: "12-1K",  tamanho: "1 kg",   preco: 80.00, img: "images/mascara-super-hidratante-1kg.jpeg" },
+          { sku: "12-650", tamanho: "650 ml", preco: 55.00, img: "images/mascara-super-hidratante-650ml.jpeg" },
+        ]
+      },
+      {
+        id: 13, nome: "Máscara para Cabelos Super Ressecados", desc: "Restaura fios extremamente ressecados",
+        variantes: [
+          { sku: "13-1K",  tamanho: "1 kg",   preco: 50.00, img: "images/mascara-super-ressecados-1kg.jpeg" },
+          { sku: "13-650", tamanho: "650 ml", preco: 35.00, img: "images/mascara-super-ressecados-650ml.jpeg" },
+        ]
+      },
     ],
   },
   {
@@ -78,9 +161,9 @@ const LINHAS = [
     cor:     "#E8F0DD",
     emoji:   "💎",
     produtos: [
-      { id: 13, nome: "Queratina", desc: "Reconstrução intensa com queratina pura",  tamanho: "1 L",    preco: 50.00, img: "" },
-      { id: 14, nome: "Colágeno",  desc: "Restaura elasticidade e força dos fios",   tamanho: "500 ml", preco: 50.00, img: "" },
-      { id: 15, nome: "Caseína",   desc: "Repõe proteínas e nutre profundamente",   tamanho: "500 ml", preco: 50.00, img: "" },
+      { id: 14, nome: "Queratina", desc: "Reconstrução intensa com queratina pura",  tamanho: "1 L",    preco: 50.00, img: "images/queratina-1L.jpeg" },
+      { id: 15, nome: "Colágeno",  desc: "Restaura elasticidade e força dos fios",   tamanho: "500 ml", preco: 50.00, img: "images/colageno-500ml.jpeg" },
+      { id: 16, nome: "Caseína",   desc: "Repõe proteínas e nutre profundamente",   tamanho: "500 ml", preco: 50.00, img: "images/caseina-500ml.jpeg" },
     ],
   },
   {
@@ -91,9 +174,9 @@ const LINHAS = [
     cor:     "#F0E8DD",
     emoji:   "💫",
     produtos: [
-      { id: 16, nome: "Creme de Pentear",            desc: "Facilita o penteado e reduz o frizz",   tamanho: "1 kg",   preco: 50.00,  img: "" },
-      { id: 17, nome: "Ativador de Cachos",          desc: "Define e hidrata cachos naturais",      tamanho: "1 L",    preco: 100.00, img: "" },
-      { id: 18, nome: "Defrizante (Anti Térmico)",   desc: "Controla o frizz e protege do calor",   tamanho: "500 ml", preco: 50.00,  img: "" },
+      { id: 17, nome: "Creme de Pentear",            desc: "Facilita o penteado e reduz o frizz",   tamanho: "1 kg",   preco: 50.00,  img: "images/creme-pentear-1kg.jpeg" },
+      { id: 18, nome: "Ativador de Cachos",          desc: "Define e hidrata cachos naturais",      tamanho: "1 L",    preco: 100.00, img: "images/ativador-cachos-1L.jpeg" },
+      { id: 19, nome: "Defrizante (Anti Térmico)",   desc: "Controla o frizz e protege do calor",   tamanho: "500 ml", preco: 50.00,  img: "images/defrizante-500ml.jpeg" },
     ],
   },
   {
@@ -104,7 +187,7 @@ const LINHAS = [
     cor:     "#EEE8D5",
     emoji:   "✦",
     produtos: [
-      { id: 19, nome: "Óleo Bifásico para Escovação", desc: "Bi-fase nutritivo para brilho e maciez", tamanho: "200 ml", preco: 50.00, img: "" },
+      { id: 20, nome: "Óleo Bifásico para Escovação", desc: "Bi-fase nutritivo para brilho e maciez", tamanho: "200 ml", preco: 50.00, img: "images/oleo-bifasico-200ml.jpeg" },
     ],
   },
   {
@@ -115,8 +198,8 @@ const LINHAS = [
     cor:     "#E8DDF0",
     emoji:   "🌟",
     produtos: [
-      { id: 20, nome: "Progressiva de Formol", desc: "Alisamento intenso de longa duração",   tamanho: "1 kg", preco: 100.00, img: "" },
-      { id: 21, nome: "Progressiva Ácida",     desc: "Alisamento gradual com pH controlado",  tamanho: "1 kg", preco: 100.00, img: "" },
+      { id: 21, nome: "Progressiva de Formol", desc: "Alisamento intenso de longa duração",   tamanho: "1 kg", preco: 100.00, img: "images/progressiva-formol-1kg.jpeg" },
+      { id: 22, nome: "Progressiva Ácida",     desc: "Alisamento gradual com pH controlado",  tamanho: "1 kg", preco: 100.00, img: "images/progressiva-acida-1kg.jpeg" },
     ],
   },
 ];
@@ -387,6 +470,129 @@ function productCard(p, l) {
       </div>
     </article>
   `;
+}
+
+/* ============================================================
+   PRODUCT DETAIL MODAL
+   ============================================================ */
+let pmCurrentProduct = null;
+let pmCurrentSku     = null;
+
+function findProductoCompletoById(produtoId) {
+  for (const linha of LINHAS) {
+    const p = linha.produtos.find(p => p.id === produtoId);
+    if (p) return { ...p, _linha: linha };
+  }
+  return null;
+}
+
+function openProductModal(produtoId) {
+  const p = findProductoCompletoById(Number(produtoId));
+  if (!p) return;
+  pmCurrentProduct = p;
+  pmCurrentSku = p.variantes ? p.variantes[0].sku : String(p.id);
+  renderProductModal();
+  const overlay = document.getElementById('product-modal-overlay');
+  const modal   = document.getElementById('product-modal');
+  if (overlay) {
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+  }
+  if (modal) modal.classList.toggle('is-frio', p.classe === 'frio');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProductModal() {
+  document.getElementById('product-modal-overlay')?.classList.remove('open');
+  document.getElementById('product-modal-overlay')?.setAttribute('aria-hidden', 'true');
+  if (!document.querySelector('.cart-drawer.open')) document.body.style.overflow = '';
+  pmCurrentProduct = null;
+  pmCurrentSku = null;
+}
+
+function renderProductModal() {
+  const p = pmCurrentProduct;
+  if (!p) return;
+  const body = document.getElementById('product-modal-body');
+  if (!body) return;
+
+  // Variante atual
+  let variant = null;
+  if (p.variantes) {
+    variant = p.variantes.find(v => v.sku === pmCurrentSku) || p.variantes[0];
+  }
+  const tamanhoAtual = variant ? variant.tamanho : (p.tamanho || '');
+  const precoAtual   = variant ? variant.preco : p.preco;
+  const imgAtual     = variant ? variant.img : p.img;
+
+  // Imagem
+  const imgHtml = imgAtual
+    ? `<img id="pm-img" src="${imgAtual}" alt="${p.nome}" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot;>${p._linha.emoji}</div>'" />`
+    : `<div class="img-placeholder">${p._linha.emoji}</div>`;
+
+  // Detalhes
+  const detalhes = p.detalhes
+    ? `<p class="pm-section-title">Sobre o Produto</p><p class="pm-detalhes">${p.detalhes}</p>`
+    : '';
+
+  // Benefícios
+  const beneficios = p.beneficios && p.beneficios.length
+    ? `<p class="pm-section-title">Benefícios</p><ul class="pm-beneficios">${p.beneficios.map(b => `<li>${b}</li>`).join('')}</ul>`
+    : '';
+
+  // Modo de uso
+  const modoUso = p.modoUso
+    ? `<p class="pm-section-title">Modo de Uso</p><p class="pm-modo-uso">${p.modoUso}</p>`
+    : '';
+
+  // Seletor de tamanhos
+  let sizesHtml = '';
+  if (p.variantes && p.variantes.length > 1) {
+    sizesHtml = `
+      <div>
+        <p class="pm-size-label">Escolha o Tamanho</p>
+        <div class="pm-sizes">
+          ${p.variantes.map(v => `
+            <button class="pm-size-btn ${v.sku === pmCurrentSku ? 'active' : ''}" data-sku="${v.sku}">
+              ${v.tamanho}
+            </button>
+          `).join('')}
+        </div>
+      </div>`;
+  } else if (tamanhoAtual) {
+    sizesHtml = `<p class="pm-size-label">Tamanho: <strong>${tamanhoAtual}</strong></p>`;
+  }
+
+  body.innerHTML = `
+    <div class="pm-image">${imgHtml}</div>
+    <div class="pm-info">
+      <span class="pm-tag">${p._linha.nome}</span>
+      <h2 class="pm-name">${p.nome}</h2>
+      <p class="pm-short">${p.desc}</p>
+      ${detalhes ? `<div class="pm-divider"></div>${detalhes}` : ''}
+      ${beneficios}
+      ${modoUso}
+      <div class="pm-divider"></div>
+      <div class="pm-bottom">
+        ${sizesHtml}
+        <div class="pm-price" id="pm-price">R$ ${fmt(precoAtual)}</div>
+        <button class="pm-add-btn" id="pm-add">+ ADICIONAR AO CARRINHO</button>
+      </div>
+    </div>
+  `;
+
+  // Listeners
+  body.querySelectorAll('.pm-size-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      pmCurrentSku = btn.dataset.sku;
+      renderProductModal();
+    });
+  });
+  document.getElementById('pm-add')?.addEventListener('click', () => {
+    addToCart(pmCurrentSku);
+    closeProductModal();
+    setTimeout(openCart, 200);
+  });
 }
 
 /* ============================================================
@@ -845,37 +1051,45 @@ function attachEvents() {
     a.addEventListener('click', closeMobileNav);
   });
 
-  // Add to cart + Size selector (delegated)
+  // Click handler para o grid de produtos (delegated)
   document.getElementById('product-sections')?.addEventListener('click', e => {
-    // Add to cart
+    // 1) Botão Adicionar ao carrinho — não abre modal
     const btn = e.target.closest('.btn-add');
     if (btn) {
+      e.stopPropagation();
       addToCart(btn.dataset.sku);
       return;
     }
-    // Size selector
+    // 2) Seletor de tamanho no card — não abre modal
     const sizeBtn = e.target.closest('.size-btn');
     if (sizeBtn) {
+      e.stopPropagation();
       const card = sizeBtn.closest('.product-card');
       if (!card) return;
-      // Update active state
       card.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
       sizeBtn.classList.add('active');
-      // Update price
       const priceEl = card.querySelector('.variant-price');
       if (priceEl) priceEl.textContent = `R$ ${fmt(Number(sizeBtn.dataset.preco))}`;
-      // Update size badge
       const sizeBadge = card.querySelector('.variant-size');
       if (sizeBadge) sizeBadge.textContent = sizeBtn.textContent.trim();
-      // Update SKU on add button
       const addBtn = card.querySelector('.btn-add');
       if (addBtn) addBtn.dataset.sku = sizeBtn.dataset.sku;
-      // Update image (if available)
       const img = card.querySelector('.product-img img');
-      if (img && sizeBtn.dataset.img) {
-        img.src = sizeBtn.dataset.img;
-      }
+      if (img && sizeBtn.dataset.img) img.src = sizeBtn.dataset.img;
+      return;
     }
+    // 3) Click no card → abre modal de detalhes
+    const card = e.target.closest('.product-card');
+    if (card) openProductModal(card.dataset.id);
+  });
+
+  // Modal events
+  document.getElementById('product-modal-close')?.addEventListener('click', closeProductModal);
+  document.getElementById('product-modal-overlay')?.addEventListener('click', e => {
+    if (e.target === document.getElementById('product-modal-overlay')) closeProductModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeProductModal();
   });
 
   // CEP
