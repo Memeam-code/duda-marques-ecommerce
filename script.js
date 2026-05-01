@@ -99,56 +99,56 @@ const LINHAS = [
         id: 6, nome: "Máscara Lipídica", desc: "Nutrição lipídica profunda",
         variantes: [
           { sku: "6-1K",   tamanho: "1 kg",   preco: 50.00, img: "images/mascara-lipidica-1kg.jpeg" },
-          { sku: "6-650",  tamanho: "650 ml", preco: 35.00, img: "images/mascara-lipidica-650ml.jpeg" },
+          { sku: "6-650",  tamanho: "650 g", preco: 35.00, img: "images/mascara-lipidica-650g.jpeg" },
         ]
       },
       {
         id: 7, nome: "Máscara Hídrica", desc: "Hidratação profunda em até 3 minutos",
         variantes: [
           { sku: "7-1K",   tamanho: "1 kg",   preco: 50.00, img: "images/mascara-hidrica-1kg.jpeg" },
-          { sku: "7-650",  tamanho: "650 ml", preco: 35.00, img: "images/mascara-hidrica-650ml.jpeg" },
+          { sku: "7-650",  tamanho: "650 g", preco: 35.00, img: "images/mascara-hidrica-650g.jpeg" },
         ]
       },
       {
         id: 8, nome: "Máscara Reconstrutora", desc: "Reconstrói a fibra capilar por dentro",
         variantes: [
           { sku: "8-1K",   tamanho: "1 kg",   preco: 50.00, img: "images/mascara-reconstrutora-1kg.jpeg" },
-          { sku: "8-650",  tamanho: "650 ml", preco: 35.00, img: "images/mascara-reconstrutora-650ml.jpeg" },
+          { sku: "8-650",  tamanho: "650 g", preco: 35.00, img: "images/mascara-reconstrutora-650g.jpeg" },
         ]
       },
       {
         id: 9, nome: "Máscara Matizadora", desc: "Neutraliza tons amarelados e avermelhados",
         variantes: [
           { sku: "9-1K",   tamanho: "1 kg",   preco: 50.00, img: "images/mascara-matizadora-1kg.jpeg" },
-          { sku: "9-650",  tamanho: "650 ml", preco: 35.00, img: "images/mascara-matizadora-650ml.jpeg" },
+          { sku: "9-650",  tamanho: "650 g", preco: 35.00, img: "images/mascara-matizadora-650g.jpeg" },
         ]
       },
       {
         id: 10, nome: "Máscara para Cabelos Afro", desc: "Nutrição especial para cachos e crespos",
         variantes: [
           { sku: "10-1K",  tamanho: "1 kg",   preco: 50.00, img: "images/mascara-afro-1kg.jpeg" },
-          { sku: "10-650", tamanho: "650 ml", preco: 35.00, img: "images/mascara-afro-650ml.jpeg" },
+          { sku: "10-650", tamanho: "650 g", preco: 35.00, img: "images/mascara-afro-650g.jpeg" },
         ]
       },
       {
         id: 11, nome: "Máscara Super Reconstrutora", desc: "Restauração intensiva para fios muito danificados",
         variantes: [
           { sku: "11-1K",  tamanho: "1 kg",   preco: 80.00, img: "images/mascara-super-reconstrutora-1kg.jpeg" },
-          { sku: "11-650", tamanho: "650 ml", preco: 55.00, img: "images/mascara-super-reconstrutora-650ml.jpeg" },
+          { sku: "11-650", tamanho: "650 g", preco: 55.00, img: "images/mascara-super-reconstrutora-650g.jpeg" },
         ]
       },
       {
         id: 12, nome: "Máscara Super Hidratante", desc: "Hidratação intensa para fios desidratados",
         variantes: [
           { sku: "12-1K",  tamanho: "1 kg",   preco: 80.00, img: "images/mascara-super-hidratante-1kg.jpeg" },
-          { sku: "12-650", tamanho: "650 ml", preco: 55.00, img: "images/mascara-super-hidratante-650ml.jpeg" },
+          { sku: "12-650", tamanho: "650 g", preco: 55.00, img: "images/mascara-super-hidratante-650g.jpeg" },
         ]
       },
       {
         id: 13, nome: "Máscara para Cabelos Super Ressecados", desc: "Restaura fios extremamente ressecados",
         variantes: [
           { sku: "13-1K",  tamanho: "1 kg",   preco: 50.00, img: "images/mascara-super-ressecados-1kg.jpeg" },
-          { sku: "13-650", tamanho: "650 ml", preco: 35.00, img: "images/mascara-super-ressecados-650ml.jpeg" },
+          { sku: "13-650", tamanho: "650 g", preco: 35.00, img: "images/mascara-super-ressecados-650g.jpeg" },
         ]
       },
     ],
@@ -174,8 +174,23 @@ const LINHAS = [
     cor:     "#F0E8DD",
     emoji:   "💫",
     produtos: [
-      { id: 17, nome: "Creme de Pentear",            desc: "Facilita o penteado e reduz o frizz",   tamanho: "1 kg",   preco: 50.00,  img: "images/creme-pentear-1kg.jpeg" },
-      { id: 18, nome: "Ativador de Cachos",          desc: "Define e hidrata cachos naturais",      tamanho: "1 L",    preco: 100.00, img: "images/ativador-cachos-1L.jpeg" },
+      {
+        id: 17, nome: "Creme de Pentear",
+        desc: "Facilita o penteado e reduz o frizz",
+        variantes: [
+          { sku: "17-1K",  tamanho: "1 kg",   preco: 50.00, img: "images/creme-pentear-1kg.jpeg" },
+          { sku: "17-650", tamanho: "650 g",  preco: 35.00, img: "images/creme-pentear-650g.jpeg" },
+          { sku: "17-300", tamanho: "300 g",  preco: 20.00, img: "images/creme-pentear-300g.jpeg" },
+        ]
+      },
+      {
+        id: 18, nome: "Ativador de Cachos",
+        desc: "Define e hidrata cachos naturais",
+        variantes: [
+          { sku: "18-1L",  tamanho: "1 L",    preco: 100.00, img: "images/ativador-cachos-1L.jpeg" },
+          { sku: "18-650", tamanho: "650 g",  preco: 65.00,  img: "images/ativador-cachos-650g.jpeg" },
+        ]
+      },
       { id: 19, nome: "Defrizante (Anti Térmico)",   desc: "Controla o frizz e protege do calor",   tamanho: "500 ml", preco: 50.00,  img: "images/defrizante-500ml.jpeg" },
     ],
   },
@@ -187,7 +202,7 @@ const LINHAS = [
     cor:     "#EEE8D5",
     emoji:   "✦",
     produtos: [
-      { id: 20, nome: "Óleo Bifásico para Escovação", desc: "Bi-fase nutritivo para brilho e maciez", tamanho: "200 ml", preco: 50.00, img: "images/oleo-bifasico-200ml.jpeg" },
+      { id: 20, nome: "Óleo Bifásico para Escovação", desc: "Bi-fase nutritivo para brilho e maciez", tamanho: "300 ml", preco: 50.00, img: "images/oleo-bifasico-300ml.jpeg" },
     ],
   },
   {
@@ -200,6 +215,17 @@ const LINHAS = [
     produtos: [
       { id: 21, nome: "Progressiva de Formol", desc: "Alisamento intenso de longa duração",   tamanho: "1 kg", preco: 100.00, img: "images/progressiva-formol-1kg.jpeg" },
       { id: 22, nome: "Progressiva Ácida",     desc: "Alisamento gradual com pH controlado",  tamanho: "1 kg", preco: 100.00, img: "images/progressiva-acida-1kg.jpeg" },
+    ],
+  },
+  {
+    id:      "corporal",
+    nome:    "CORPORAL",
+    tag:     "Cuidado da Pele",
+    desc:    "Cuidado completo para a pele com ativos de alta performance.",
+    cor:     "#DCE8F0",
+    emoji:   "🌸",
+    produtos: [
+      { id: 23, nome: "Creme Corporal Hidratante", desc: "Hidratação intensa e nutrição profunda da pele", tamanho: "650 g", preco: 50.00, img: "images/creme-corporal-650g.jpeg" },
     ],
   },
 ];
