@@ -40,7 +40,16 @@ const LINHAS = [
       { id: 1, nome: "Shampoo E.D.T.A",     desc: "Remove resíduos minerais e purifica os fios", tamanho: "1 L", preco: 50.00, img: "" },
       { id: 2, nome: "Shampoo Hidratante",  desc: "Hidratação profunda para cabelos secos",       tamanho: "1 L", preco: 50.00, img: "" },
       { id: 3, nome: "Shampoo Anti Caspa",  desc: "Elimina a caspa e controla a oleosidade",      tamanho: "1 L", preco: 50.00, img: "" },
-      { id: 4, nome: "Shampoo Mentolado",   desc: "Sensação refrescante com ação estimulante",   tamanho: "1 L", preco: 100.00, img: "" },
+      {
+        id: 4,
+        nome: "Shampoo Mentolado",
+        desc: "Limpeza eficaz com sensação refrescante de menta. Auxilia o crescimento e saúde dos fios.",
+        classe: "frio",
+        variantes: [
+          { sku: "4-1L",   tamanho: "1 L",    preco: 100.00, img: "images/shampoo-mentolado-1L.png" },
+          { sku: "4-300",  tamanho: "300 ml", preco: 50.00,  img: "images/shampoo-mentolado-300ml.png" },
+        ]
+      },
     ],
   },
   {
@@ -133,6 +142,50 @@ function findProduto(produtoId) {
   for (const linha of LINHAS) {
     const p = linha.produtos.find(p => p.id === produtoId);
     if (p) return { ...p, emoji: linha.emoji, linhaId: linha.id };
+  }
+  return null;
+}
+
+/**
+ * Encontra um produto pelo SKU (suporta variantes).
+ * SKU para produtos simples = String(id)
+ * SKU para variantes = ex. "4-1L"
+ */
+function findBySku(sku) {
+  for (const linha of LINHAS) {
+    for (const p of linha.produtos) {
+      if (p.variantes) {
+        for (const v of p.variantes) {
+          if (v.sku === sku) {
+            return {
+              sku:        v.sku,
+              productId:  p.id,
+              nome:       p.nome,
+              desc:       p.desc,
+              tamanho:    v.tamanho,
+              preco:      v.preco,
+              img:        v.img,
+              classe:     p.classe || "",
+              emoji:      linha.emoji,
+              linhaId:    linha.id,
+            };
+          }
+        }
+      } else if (String(p.id) === sku) {
+        return {
+          sku:        String(p.id),
+          productId:  p.id,
+          nome:       p.nome,
+          desc:       p.desc,
+          tamanho:    p.tamanho,
+          preco:      p.preco,
+          img:        p.img,
+          classe:     p.classe || "",
+          emoji:      linha.emoji,
+          linhaId:    linha.id,
+        };
+      }
+    }
   }
   return null;
 }
@@ -279,8 +332,43 @@ function buildProductSections() {
 }
 
 function productCard(p, l) {
+  // Produto com variantes (múltiplos tamanhos)
+  if (p.variantes && p.variantes.length) {
+    const v0 = p.variantes[0];
+    const imgContent = v0.img
+      ? `<img src="${v0.img}" alt="${p.nome}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot; style=&quot;background:${l.cor}&quot;>${l.emoji}</div>'" />`
+      : `<div class="img-placeholder" style="background:${l.cor}">${l.emoji}</div>`;
+    const sizes = p.variantes.map((v, i) => `
+      <button class="size-btn ${i === 0 ? 'active' : ''}" data-sku="${v.sku}" data-preco="${v.preco}" data-img="${v.img || ''}">
+        ${v.tamanho}
+      </button>
+    `).join('');
+    const classeExtra = p.classe ? `is-${p.classe}` : '';
+    return `
+      <article class="product-card has-variants ${classeExtra}" data-id="${p.id}" ${classeExtra ? 'data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2"' : ''}>
+        ${classeExtra === 'is-frio' ? '<div class="snow-overlay"></div>' : ''}
+        <div class="product-img">${imgContent}</div>
+        <div class="product-info">
+          <span class="product-size variant-size">${v0.tamanho}</span>
+          <h3 class="product-name">${p.nome}</h3>
+          <p class="product-desc">${p.desc}</p>
+          <div class="size-selector">
+            ${sizes}
+          </div>
+          <div class="product-footer">
+            <span class="product-price variant-price">R$ ${fmt(v0.preco)}</span>
+            <button class="btn-add" data-sku="${v0.sku}" aria-label="Adicionar ${p.nome} ao carrinho">
+              + CARRINHO
+            </button>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  // Produto simples
   const imgContent = p.img
-    ? `<img src="${p.img}" alt="${p.nome}" loading="lazy" />`
+    ? `<img src="${p.img}" alt="${p.nome}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=&quot;img-placeholder&quot; style=&quot;background:${l.cor}&quot;>${l.emoji}</div>'" />`
     : `<div class="img-placeholder" style="background:${l.cor}">${l.emoji}</div>`;
   const tamanho = p.tamanho ? `<span class="product-size">${p.tamanho}</span>` : '';
   return `
@@ -292,7 +380,7 @@ function productCard(p, l) {
         <p class="product-desc">${p.desc}</p>
         <div class="product-footer">
           <span class="product-price">R$ ${fmt(p.preco)}</span>
-          <button class="btn-add" data-pid="${p.id}" aria-label="Adicionar ${p.nome} ao carrinho">
+          <button class="btn-add" data-sku="${p.id}" aria-label="Adicionar ${p.nome} ao carrinho">
             + CARRINHO
           </button>
         </div>
@@ -304,28 +392,29 @@ function productCard(p, l) {
 /* ============================================================
    CART
    ============================================================ */
-function addToCart(produtoId) {
-  const prod = findProduto(produtoId);
+function addToCart(sku) {
+  const prod = findBySku(String(sku));
   if (!prod) return;
-  const existing = cart.find(i => i.id === produtoId);
+  const existing = cart.find(i => i.sku === prod.sku);
   if (existing) {
     existing.qty++;
   } else {
     cart.push({ ...prod, qty: 1 });
   }
   updateCartUI();
-  showToast(`✓ ${prod.nome} adicionado ao carrinho`);
+  const tamLabel = prod.tamanho ? ` (${prod.tamanho})` : '';
+  showToast(`✓ ${prod.nome}${tamLabel} adicionado ao carrinho`);
   bumpCartIcon();
 }
 
-function removeFromCart(produtoId) {
-  cart = cart.filter(i => i.id !== produtoId);
+function removeFromCart(sku) {
+  cart = cart.filter(i => i.sku !== sku);
   updateCartUI();
   renderCartBody();
 }
 
-function updateQty(produtoId, delta) {
-  const item = cart.find(i => i.id === produtoId);
+function updateQty(sku, delta) {
+  const item = cart.find(i => i.sku === sku);
   if (!item) return;
   item.qty = Math.max(1, item.qty + delta);
   updateCartUI();
@@ -370,24 +459,27 @@ function renderCartBody() {
     return;
   }
 
-  body.innerHTML = cart.map(item => `
-    <div class="cart-item" data-id="${item.id}">
+  body.innerHTML = cart.map(item => {
+    const tamLabel = item.tamanho ? `<small class="cart-item-size">${item.tamanho}</small>` : '';
+    return `
+    <div class="cart-item" data-sku="${item.sku}">
       <div class="cart-item-img">${item.img
-        ? `<img src="${item.img}" alt="${item.nome}" />`
+        ? `<img src="${item.img}" alt="${item.nome}" onerror="this.outerHTML='${item.emoji}'" />`
         : item.emoji}</div>
       <div class="cart-item-info">
         <p class="cart-item-name">${item.nome}</p>
+        ${tamLabel}
         <p class="cart-item-price">R$ ${fmt(item.preco)} × ${item.qty}</p>
         <div class="cart-qty-row">
-          <button class="qty-btn" data-action="dec" data-id="${item.id}" aria-label="Diminuir">−</button>
+          <button class="qty-btn" data-action="dec" data-sku="${item.sku}" aria-label="Diminuir">−</button>
           <span class="qty-value">${item.qty}</span>
-          <button class="qty-btn" data-action="inc" data-id="${item.id}" aria-label="Aumentar">+</button>
+          <button class="qty-btn" data-action="inc" data-sku="${item.sku}" aria-label="Aumentar">+</button>
         </div>
-        <button class="cart-item-remove" data-id="${item.id}">Remover</button>
+        <button class="cart-item-remove" data-sku="${item.sku}">Remover</button>
       </div>
       <span class="cart-item-subtotal">R$ ${fmt(item.preco * item.qty)}</span>
     </div>
-  `).join('');
+  `;}).join('');
 
   const total  = cartTotal();
   const falta  = Math.max(0, CONFIG.FRETE_GRATIS - total);
@@ -413,13 +505,13 @@ function renderCartBody() {
   // Events
   body.querySelectorAll('.qty-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const id  = Number(btn.dataset.id);
+      const sku = btn.dataset.sku;
       const dir = btn.dataset.action === 'inc' ? 1 : -1;
-      updateQty(id, dir);
+      updateQty(sku, dir);
     });
   });
   body.querySelectorAll('.cart-item-remove').forEach(btn => {
-    btn.addEventListener('click', () => removeFromCart(Number(btn.dataset.id)));
+    btn.addEventListener('click', () => removeFromCart(btn.dataset.sku));
   });
   document.getElementById('btn-checkout')?.addEventListener('click', openCheckout);
 }
@@ -544,7 +636,7 @@ function renderShippingSummary() {
     <div class="order-mini-summary">
       ${cart.map(i => `
         <div class="summary-row">
-          <span>${i.nome} × ${i.qty}</span>
+          <span>${i.nome}${i.tamanho ? ' ('+i.tamanho+')' : ''} × ${i.qty}</span>
           <span>R$ ${fmt(i.preco * i.qty)}</span>
         </div>`).join('')}
       <div class="summary-row">
@@ -574,7 +666,7 @@ function renderReview() {
       ${cart.map(i => `
         <div class="review-item">
           <div class="review-row">
-            <span>${i.nome} × ${i.qty}</span>
+            <span>${i.nome}${i.tamanho ? ' ('+i.tamanho+')' : ''} × ${i.qty}</span>
             <span><strong>R$ ${fmt(i.preco * i.qty)}</strong></span>
           </div>
         </div>`).join('')}
@@ -644,7 +736,7 @@ Endereço: ${addr}${checkoutData.complemento ? '\nComplemento: ' + checkoutData.
     address_cep:          checkoutData.cep,
     shipping_method:      tipo,
     shipping_cost:        freeShip ? 0 : fv,
-    items:                cart.map(i => ({ id: i.id, nome: i.nome, preco: i.preco, qty: i.qty })),
+    items:                cart.map(i => ({ sku: i.sku, nome: i.nome, tamanho: i.tamanho || null, preco: i.preco, qty: i.qty })),
     subtotal:             sub,
     total:                total,
     status:               'pending',
@@ -753,10 +845,37 @@ function attachEvents() {
     a.addEventListener('click', closeMobileNav);
   });
 
-  // Add to cart (delegated)
+  // Add to cart + Size selector (delegated)
   document.getElementById('product-sections')?.addEventListener('click', e => {
+    // Add to cart
     const btn = e.target.closest('.btn-add');
-    if (btn) addToCart(Number(btn.dataset.pid));
+    if (btn) {
+      addToCart(btn.dataset.sku);
+      return;
+    }
+    // Size selector
+    const sizeBtn = e.target.closest('.size-btn');
+    if (sizeBtn) {
+      const card = sizeBtn.closest('.product-card');
+      if (!card) return;
+      // Update active state
+      card.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      sizeBtn.classList.add('active');
+      // Update price
+      const priceEl = card.querySelector('.variant-price');
+      if (priceEl) priceEl.textContent = `R$ ${fmt(Number(sizeBtn.dataset.preco))}`;
+      // Update size badge
+      const sizeBadge = card.querySelector('.variant-size');
+      if (sizeBadge) sizeBadge.textContent = sizeBtn.textContent.trim();
+      // Update SKU on add button
+      const addBtn = card.querySelector('.btn-add');
+      if (addBtn) addBtn.dataset.sku = sizeBtn.dataset.sku;
+      // Update image (if available)
+      const img = card.querySelector('.product-img img');
+      if (img && sizeBtn.dataset.img) {
+        img.src = sizeBtn.dataset.img;
+      }
+    }
   });
 
   // CEP
@@ -807,6 +926,44 @@ function attachEvents() {
 }
 
 /* ============================================================
+   ❄️  EFEITO GELADO (neve + tilt) — produtos com classe "frio"
+   ============================================================ */
+const FLAKES = ['❄', '❅', '❆', '✻', '✼'];
+
+function spawnFlake(card) {
+  const overlay = card.querySelector('.snow-overlay');
+  if (!overlay) return;
+  const flake = document.createElement('span');
+  flake.className = 'snowflake';
+  flake.textContent = FLAKES[Math.floor(Math.random() * FLAKES.length)];
+  flake.style.left           = Math.random() * 100 + '%';
+  flake.style.fontSize       = (Math.random() * 12 + 8) + 'px';
+  flake.style.animationDuration = (Math.random() * 3 + 3) + 's';
+  flake.style.animationDelay = (Math.random() * 2) + 's';
+  flake.style.opacity        = (Math.random() * 0.5 + 0.4).toFixed(2);
+  overlay.appendChild(flake);
+  setTimeout(() => flake.remove(), 6000);
+}
+
+function startSnowEffect() {
+  const cards = document.querySelectorAll('.product-card.is-frio');
+  cards.forEach(card => {
+    // Spawn flake every ~400ms while card is in viewport
+    setInterval(() => {
+      const rect = card.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inView) spawnFlake(card);
+    }, 400);
+  });
+}
+
+function startTiltEffect() {
+  if (typeof VanillaTilt !== 'undefined') {
+    VanillaTilt.init(document.querySelectorAll('[data-tilt]'));
+  }
+}
+
+/* ============================================================
    INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -818,4 +975,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
   attachEvents();
   onScroll();
+  startSnowEffect();
+  setTimeout(startTiltEffect, 100); // aguarda carregar VanillaTilt do CDN
 });
