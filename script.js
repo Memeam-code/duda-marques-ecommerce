@@ -46,8 +46,8 @@ const LINHAS = [
         desc: "Limpeza eficaz com sensação refrescante de menta. Auxilia o crescimento e saúde dos fios.",
         classe: "frio",
         variantes: [
-          { sku: "4-1L",   tamanho: "1 L",    preco: 100.00, img: "images/shampoo-mentolado-1L.png" },
-          { sku: "4-300",  tamanho: "300 ml", preco: 50.00,  img: "images/shampoo-mentolado-300ml.png" },
+          { sku: "4-1L",   tamanho: "1 L",    preco: 100.00, img: "images/shampoo-mentolado-1L.jpeg" },
+          { sku: "4-300",  tamanho: "300 ml", preco: 50.00,  img: "images/shampoo-mentolado-300ml.jpeg" },
         ]
       },
     ],
