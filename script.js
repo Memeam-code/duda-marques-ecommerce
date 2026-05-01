@@ -37,10 +37,10 @@ const LINHAS = [
     cor:     "#DDE8F0",
     emoji:   "🧴",
     produtos: [
-      { id: 1,  nome: "Shampoo Anticaspa",    desc: "Elimina a caspa e controla a oleosidade",          preco: 49.90, img: "" },
-      { id: 2,  nome: "Shampoo Hidratante",   desc: "Hidratação profunda para cabelos secos",           preco: 44.90, img: "" },
-      { id: 3,  nome: "Shampoo com EDTA",     desc: "Remove resíduos minerais e purifica os fios",     preco: 54.90, img: "" },
-      { id: 4,  nome: "Shampoo Mentolado",    desc: "Sensação refrescante com ação estimulante",       preco: 47.90, img: "" },
+      { id: 1, nome: "Shampoo E.D.T.A",     desc: "Remove resíduos minerais e purifica os fios", tamanho: "1 L", preco: 50.00, img: "" },
+      { id: 2, nome: "Shampoo Hidratante",  desc: "Hidratação profunda para cabelos secos",       tamanho: "1 L", preco: 50.00, img: "" },
+      { id: 3, nome: "Shampoo Anti Caspa",  desc: "Elimina a caspa e controla a oleosidade",      tamanho: "1 L", preco: 50.00, img: "" },
+      { id: 4, nome: "Shampoo Mentolado",   desc: "Sensação refrescante com ação estimulante",   tamanho: "1 L", preco: 100.00, img: "" },
     ],
   },
   {
@@ -51,12 +51,14 @@ const LINHAS = [
     cor:     "#F0DDE8",
     emoji:   "✨",
     produtos: [
-      { id: 5,  nome: "Máscara Antioxidante",           desc: "Protege os fios dos radicais livres",            preco: 79.90,  img: "" },
-      { id: 6,  nome: "Máscara Matizadora",             desc: "Neutraliza tons amarelados e avermelhados",      preco: 89.90,  img: "" },
-      { id: 7,  nome: "Máscara para Cabelos Afro",      desc: "Nutrição especial para cachos e crespos",       preco: 99.90,  img: "" },
-      { id: 8,  nome: "Máscara Hidratação Intensiva",   desc: "Hidratação profunda em até 3 minutos",          preco: 84.90,  img: "" },
-      { id: 9,  nome: "Máscara Super Ressecados",       desc: "Restaura fios extremamente danificados",        preco: 109.90, img: "" },
-      { id: 10, nome: "Máscara Reconstrução Intensiva", desc: "Reconstrói a fibra capilar por dentro",         preco: 129.90, img: "" },
+      { id: 5,  nome: "Máscara Lipídica",                  desc: "Nutrição lipídica profunda",                       tamanho: "1 kg", preco: 50.00, img: "" },
+      { id: 6,  nome: "Máscara Hídrica",                   desc: "Hidratação profunda em até 3 minutos",              tamanho: "1 kg", preco: 50.00, img: "" },
+      { id: 7,  nome: "Máscara Reconstrutora",             desc: "Reconstrói a fibra capilar por dentro",             tamanho: "1 kg", preco: 50.00, img: "" },
+      { id: 8,  nome: "Máscara Matizadora",                desc: "Neutraliza tons amarelados e avermelhados",        tamanho: "1 kg", preco: 50.00, img: "" },
+      { id: 9,  nome: "Máscara para Cabelos Afro",         desc: "Nutrição especial para cachos e crespos",          tamanho: "1 kg", preco: 50.00, img: "" },
+      { id: 10, nome: "Máscara Super Reconstrutora",       desc: "Restauração intensiva para fios muito danificados", tamanho: "1 kg", preco: 80.00, img: "" },
+      { id: 11, nome: "Máscara Super Hidratante",          desc: "Hidratação intensa para fios desidratados",        tamanho: "1 kg", preco: 80.00, img: "" },
+      { id: 12, nome: "Máscara para Cabelos Super Ressecados", desc: "Restaura fios extremamente ressecados",          tamanho: "1 kg", preco: 50.00, img: "" },
     ],
   },
   {
@@ -67,7 +69,9 @@ const LINHAS = [
     cor:     "#E8F0DD",
     emoji:   "💎",
     produtos: [
-      { id: 11, nome: "Colágeno, Caseína e Queratina", desc: "Tripla ação reconstrutora para fios danificados", preco: 149.90, img: "" },
+      { id: 13, nome: "Queratina", desc: "Reconstrução intensa com queratina pura",  tamanho: "1 L",    preco: 50.00, img: "" },
+      { id: 14, nome: "Colágeno",  desc: "Restaura elasticidade e força dos fios",   tamanho: "500 ml", preco: 50.00, img: "" },
+      { id: 15, nome: "Caseína",   desc: "Repõe proteínas e nutre profundamente",   tamanho: "500 ml", preco: 50.00, img: "" },
     ],
   },
   {
@@ -78,9 +82,9 @@ const LINHAS = [
     cor:     "#F0E8DD",
     emoji:   "💫",
     produtos: [
-      { id: 12, nome: "Ativador de Cachos",         desc: "Define e hidrata cachos naturais",       preco: 59.90, img: "" },
-      { id: 13, nome: "Creme de Pentear",           desc: "Facilita o penteado e reduz o frizz",   preco: 54.90, img: "" },
-      { id: 14, nome: "Defrizante Protetor Térmico",desc: "Controla o frizz e protege do calor",   preco: 69.90, img: "" },
+      { id: 16, nome: "Creme de Pentear",            desc: "Facilita o penteado e reduz o frizz",   tamanho: "1 kg",   preco: 50.00,  img: "" },
+      { id: 17, nome: "Ativador de Cachos",          desc: "Define e hidrata cachos naturais",      tamanho: "1 L",    preco: 100.00, img: "" },
+      { id: 18, nome: "Defrizante (Anti Térmico)",   desc: "Controla o frizz e protege do calor",   tamanho: "500 ml", preco: 50.00,  img: "" },
     ],
   },
   {
@@ -91,7 +95,7 @@ const LINHAS = [
     cor:     "#EEE8D5",
     emoji:   "✦",
     produtos: [
-      { id: 15, nome: "Óleo Bifásico", desc: "Bi-fase nutritivo para brilho e maciez", preco: 89.90, img: "" },
+      { id: 19, nome: "Óleo Bifásico para Escovação", desc: "Bi-fase nutritivo para brilho e maciez", tamanho: "200 ml", preco: 50.00, img: "" },
     ],
   },
   {
@@ -102,22 +106,16 @@ const LINHAS = [
     cor:     "#E8DDF0",
     emoji:   "🌟",
     produtos: [
-      { id: 16, nome: "Progressiva Ácida",       desc: "Alisamento gradual com pH controlado",       preco: 189.90, img: "" },
-      { id: 17, nome: "Progressiva com Formol",  desc: "Alisamento intenso de longa duração",        preco: 229.90, img: "" },
-    ],
-  },
-  {
-    id:      "corporal",
-    nome:    "CORPORAL",
-    tag:     "Cuidado da Pele",
-    desc:    "Cuidado completo para a pele com ativos de alta performance.",
-    cor:     "#DCE8F0",
-    emoji:   "🌸",
-    produtos: [
-      { id: 18, nome: "Creme Corporal Ácido Hialurônico", desc: "Hidratação intensa e rejuvenescimento da pele", preco: 69.90, img: "" },
+      { id: 20, nome: "Progressiva de Formol", desc: "Alisamento intenso de longa duração",   tamanho: "1 kg", preco: 100.00, img: "" },
+      { id: 21, nome: "Progressiva Ácida",     desc: "Alisamento gradual com pH controlado",  tamanho: "1 kg", preco: 100.00, img: "" },
     ],
   },
 ];
+
+/* ── SUPABASE ──────────────────────────────────────────────── */
+const SUPABASE_URL  = "https://uuarmzyntcqrbpludyrp.supabase.co";
+const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1YXJtenludGNxcmJwbHVkeXJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1MDU5MzAsImV4cCI6MjA5MzA4MTkzMH0.1-R24RJrvoaR7XI3x7eaoXUPzXyH2h0WrrHnIZb_xQ4";
+let supabase = null;
 
 /* ============================================================
    STATE
@@ -155,6 +153,12 @@ function freteValor() {
 /* ============================================================
    BOOT — APPLY CONFIG
    ============================================================ */
+function initSupabase() {
+  if (window.supabase && SUPABASE_URL && SUPABASE_ANON) {
+    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+  }
+}
+
 function applyConfig() {
   const whatsLink = `https://wa.me/${CONFIG.WHATSAPP}`;
 
@@ -248,21 +252,28 @@ function buildProductSections() {
   if (!container) return;
   container.innerHTML = LINHAS.map(l => `
     <section class="line-section" id="${l.id}" aria-label="Linha ${l.nome}">
-      <div class="container">
-        <div class="line-header">
-          <div class="line-hero-img" style="background:${l.cor}">
-            <div class="img-placeholder" style="background:${l.cor}">${l.emoji}</div>
-          </div>
-          <div class="line-meta">
-            <p class="line-tag">${l.tag}</p>
-            <h2 class="line-name">${l.nome}</h2>
-            <p class="line-desc">${l.desc}</p>
+
+      <!-- Banner colorido da linha (estilo Kérastase) -->
+      <div class="line-section-header" style="background:${l.cor}">
+        <div class="container">
+          <div class="line-header-inner">
+            <div class="line-emoji-badge">${l.emoji}</div>
+            <div>
+              <p class="line-tag">${l.tag}</p>
+              <h2 class="line-name">${l.nome}</h2>
+              <p class="line-desc">${l.desc}</p>
+            </div>
           </div>
         </div>
+      </div>
+
+      <!-- Grid de produtos -->
+      <div class="container">
         <div class="products-grid">
           ${l.produtos.map(p => productCard(p, l)).join('')}
         </div>
       </div>
+
     </section>
   `).join('');
 }
@@ -271,10 +282,12 @@ function productCard(p, l) {
   const imgContent = p.img
     ? `<img src="${p.img}" alt="${p.nome}" loading="lazy" />`
     : `<div class="img-placeholder" style="background:${l.cor}">${l.emoji}</div>`;
+  const tamanho = p.tamanho ? `<span class="product-size">${p.tamanho}</span>` : '';
   return `
     <article class="product-card" data-id="${p.id}">
       <div class="product-img">${imgContent}</div>
       <div class="product-info">
+        ${tamanho}
         <h3 class="product-name">${p.nome}</h3>
         <p class="product-desc">${p.desc}</p>
         <div class="product-footer">
@@ -597,7 +610,10 @@ function confirmOrder() {
   const freeShip = sub >= CONFIG.FRETE_GRATIS;
   const total = sub + (freeShip ? 0 : fv);
   const addr = `${checkoutData.rua}, ${checkoutData.numero}${checkoutData.complemento ? ', '+checkoutData.complemento : ''}, ${checkoutData.bairro}, ${checkoutData.cidade} - ${checkoutData.uf}, CEP: ${checkoutData.cep}`;
-  const itens = cart.map(i => `• ${i.nome} ×${i.qty} — R$ ${fmt(i.preco * i.qty)}`).join('\n');
+  const itens = cart.map(i => {
+    const tam = i.tamanho ? ` (${i.tamanho})` : '';
+    return `• ${i.nome}${tam} ×${i.qty} — R$ ${fmt(i.preco * i.qty)}`;
+  }).join('\n');
   const msg = `🛍️ *NOVO PEDIDO — ${CONFIG.NOME_LOJA}*
 
 *Produtos:*
@@ -614,6 +630,26 @@ E-mail: ${checkoutData.email}
 Endereço: ${addr}${checkoutData.complemento ? '\nComplemento: ' + checkoutData.complemento : ''}`;
 
   const encoded = encodeURIComponent(msg);
+  // Salva pedido no Supabase
+  saveOrderToSupabase({
+    customer_name:        checkoutData.nome,
+    customer_email:       checkoutData.email,
+    customer_phone:       checkoutData.tel,
+    address_street:       checkoutData.rua,
+    address_number:       checkoutData.numero,
+    address_complement:   checkoutData.complemento,
+    address_neighborhood: checkoutData.bairro,
+    address_city:         checkoutData.cidade,
+    address_state:        checkoutData.uf,
+    address_cep:          checkoutData.cep,
+    shipping_method:      tipo,
+    shipping_cost:        freeShip ? 0 : fv,
+    items:                cart.map(i => ({ id: i.id, nome: i.nome, preco: i.preco, qty: i.qty })),
+    subtotal:             sub,
+    total:                total,
+    status:               'pending',
+  });
+
   closeCheckout();
   showSuccess();
   setTimeout(() => {
@@ -621,6 +657,15 @@ Endereço: ${addr}${checkoutData.complemento ? '\nComplemento: ' + checkoutData.
   }, 800);
   cart = [];
   updateCartUI();
+}
+
+async function saveOrderToSupabase(orderData) {
+  if (!supabase) return;
+  try {
+    await supabase.from('orders').insert([orderData]);
+  } catch (e) {
+    console.warn('Supabase save failed (non-critical):', e);
+  }
 }
 
 function showSuccess() {
@@ -765,6 +810,7 @@ function attachEvents() {
    INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
+  initSupabase();
   applyConfig();
   buildNav();
   buildCarousel();
