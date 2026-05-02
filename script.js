@@ -359,6 +359,7 @@ const LINHAS = [
     desc:    "Nutrição e brilho incomparáveis com a leveza dos melhores óleos capilares.",
     cor:     "#EEE8D5",
     emoji:   "✦",
+    banner:  "images/banner-oleo.jpeg",
     produtos: [
       {
         id: 20, nome: "Óleo Bifásico para Escovação",
