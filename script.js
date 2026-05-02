@@ -56,6 +56,13 @@ const LINHAS = [
       {
         id: 3, nome: "Shampoo Anti Caspa",
         desc: "Elimina a caspa e controla a oleosidade",
+        detalhes: "Composto pelos ativos cetoconazol e ácido salicílico, age como antifúngico, atuando contra a levedura Malassezia — principal envolvida na caspa. Reduz a quantidade do fungo no couro cabeludo, diminui coceira, vermelhidão e descamação, controlando quadros como dermatite seborreica.",
+        beneficios: [
+          "Ação antifúngica com cetoconazol",
+          "Reduz coceira e vermelhidão",
+          "Combate caspa e descamação",
+          "Controla dermatite seborreica",
+        ],
         variantes: [
           { sku: "3-1L",   tamanho: "1 L",    preco: 50.00, img: "images/shampoo-anticaspa-1L.jpeg" },
           { sku: "3-300",  tamanho: "300 ml", preco: 25.00, img: "images/shampoo-anticaspa-300ml.jpeg" },
@@ -97,63 +104,126 @@ const LINHAS = [
     banner:  "images/banner-mascaras.jpeg",
     produtos: [
       {
-        id: 24, nome: "Máscara Antioxidante", desc: "Protege os fios dos radicais livres",
+        id: 24, nome: "Máscara Antioxidante",
+        desc: "Protege os fios dos radicais livres",
+        detalhes: "Composta por ativos antioxidantes, é usada em cabelos que passaram por processo de coloração e descoloração — neutralizando os resíduos de peróxido de hidrogênio e evitando futuros cortes químicos.",
+        beneficios: [
+          "Neutraliza resíduos de peróxido",
+          "Indicada pós coloração/descoloração",
+          "Previne cortes químicos",
+          "Protege contra radicais livres",
+        ],
         variantes: [
           { sku: "24-1K",   tamanho: "1 kg",   preco: 80.00, img: "images/mascara-antioxidante-1kg.jpeg" },
           { sku: "24-650",  tamanho: "650 g", preco: 55.00, img: "images/mascara-antioxidante-650g.jpeg" },
         ]
       },
       {
-        id: 6, nome: "Máscara Lipídica", desc: "Nutrição lipídica profunda",
+        id: 6, nome: "Máscara Lipídica",
+        desc: "Nutrição lipídica profunda",
+        detalhes: "Atua devolvendo os lipídios (gordura) à fibra, restaurando o brilho e a maciez perdidos do cabelo.",
+        beneficios: [
+          "Devolve lipídios à fibra capilar",
+          "Restaura brilho natural",
+          "Aumenta a maciez dos fios",
+        ],
         variantes: [
           { sku: "6-1K",   tamanho: "1 kg",   preco: 50.00, img: "images/mascara-lipidica-1kg.jpeg" },
           { sku: "6-650",  tamanho: "650 g", preco: 35.00, img: "images/mascara-lipidica-650g.jpeg" },
         ]
       },
       {
-        id: 7, nome: "Máscara Hídrica", desc: "Hidratação profunda em até 3 minutos",
+        id: 7, nome: "Máscara Hídrica",
+        desc: "Hidratação profunda em até 3 minutos",
+        detalhes: "Age devolvendo a parte hídrica (água) ao córtex, restaurando o brilho natural da fibra capilar.",
+        beneficios: [
+          "Repõe água no córtex capilar",
+          "Devolve brilho natural",
+          "Hidratação profunda rápida",
+        ],
         variantes: [
           { sku: "7-1K",   tamanho: "1 kg",   preco: 50.00, img: "images/mascara-hidrica-1kg.jpeg" },
           { sku: "7-650",  tamanho: "650 g", preco: 35.00, img: "images/mascara-hidrica-650g.jpeg" },
         ]
       },
       {
-        id: 8, nome: "Máscara Reconstrutora", desc: "Reconstrói a fibra capilar por dentro",
+        id: 8, nome: "Máscara Reconstrutora",
+        desc: "Reconstrói a fibra capilar por dentro",
+        detalhes: "Rica em aminoácidos e proteínas, age instantaneamente na fibra capilar através das ligações peptídicas e pontes de enxofre (cisteína).",
+        beneficios: [
+          "Rica em aminoácidos e proteínas",
+          "Refaz ligações peptídicas",
+          "Reconstrói pontes de enxofre",
+          "Ação instantânea na fibra",
+        ],
         variantes: [
           { sku: "8-1K",   tamanho: "1 kg",   preco: 50.00, img: "images/mascara-reconstrutora-1kg.jpeg" },
           { sku: "8-650",  tamanho: "650 g", preco: 35.00, img: "images/mascara-reconstrutora-650g.jpeg" },
         ]
       },
       {
-        id: 9, nome: "Máscara Matizadora", desc: "Neutraliza tons amarelados e avermelhados",
+        id: 9, nome: "Máscara Matizadora",
+        desc: "Neutraliza tons amarelados e devolve o efeito platinado",
+        detalhes: "Composta por pigmento 100% aniônico, tem a finalidade de tratar a fibra capilar e devolver o efeito platinado aos cabelos loiros e grisalhos.",
+        beneficios: [
+          "Pigmento 100% aniônico",
+          "Devolve efeito platinado",
+          "Trata e matiza ao mesmo tempo",
+          "Ideal para loiros e grisalhos",
+        ],
         variantes: [
           { sku: "9-1K",   tamanho: "1 kg",   preco: 50.00, img: "images/mascara-matizadora-1kg.jpeg" },
           { sku: "9-650",  tamanho: "650 g", preco: 35.00, img: "images/mascara-matizadora-650g.jpeg" },
         ]
       },
       {
-        id: 10, nome: "Máscara para Cabelos Afro", desc: "Nutrição especial para cachos e crespos",
+        id: 10, nome: "Máscara para Cabelos Afro",
+        desc: "Tratamento especial para cabelos extremamente secos",
+        detalhes: "Criada para tratar cabelos extremamente secos. Por ser uma fibra frágil e sem brilho, ela trata, estabiliza o pH e devolve brilho e maciez aos fios afro.",
+        beneficios: [
+          "Trata cabelos extremamente secos",
+          "Estabiliza o pH da fibra",
+          "Devolve brilho e maciez",
+          "Específica para fios afro",
+        ],
         variantes: [
           { sku: "10-1K",  tamanho: "1 kg",   preco: 50.00, img: "images/mascara-afro-1kg.jpeg" },
           { sku: "10-650", tamanho: "650 g", preco: 35.00, img: "images/mascara-afro-650g.jpeg" },
         ]
       },
       {
-        id: 11, nome: "Máscara Super Reconstrutora", desc: "Restauração intensiva para fios muito danificados",
+        id: 11, nome: "Máscara Super Reconstrutora",
+        desc: "O dobro de ativos para fios muito danificados",
+        detalhes: "Com o dobro dos ativos da reconstrutora tradicional. Rica em aminoácidos e proteínas, age instantaneamente na fibra capilar através das ligações peptídicas e pontes de enxofre (cisteína).",
+        beneficios: [
+          "Dobro de ativos reconstrutores",
+          "Rica em aminoácidos e proteínas",
+          "Refaz ligações peptídicas",
+          "Para danos químicos severos",
+        ],
         variantes: [
           { sku: "11-1K",  tamanho: "1 kg",   preco: 80.00, img: "images/mascara-super-reconstrutora-1kg.jpeg" },
           { sku: "11-650", tamanho: "650 g", preco: 55.00, img: "images/mascara-super-reconstrutora-650g.jpeg" },
         ]
       },
       {
-        id: 12, nome: "Máscara Super Hidratante", desc: "Hidratação intensa para fios desidratados",
+        id: 12, nome: "Máscara Super Hidratante",
+        desc: "Hidratação intensa para fios desidratados",
         variantes: [
           { sku: "12-1K",  tamanho: "1 kg",   preco: 80.00, img: "images/mascara-super-hidratante-1kg.jpeg" },
           { sku: "12-650", tamanho: "650 g", preco: 55.00, img: "images/mascara-super-hidratante-650g.jpeg" },
         ]
       },
       {
-        id: 13, nome: "Máscara para Cabelos Super Ressecados", desc: "Restaura fios extremamente ressecados",
+        id: 13, nome: "Máscara para Cabelos Super Ressecados",
+        desc: "Restaura fios fragilizados por processos químicos",
+        detalhes: "Aplicada em cabelos fragilizados por processos químicos que perderam boa parte da estrutura no córtex. Tem a função de devolver toda a estrutura do córtex, deixando a fibra macia e com brilho.",
+        beneficios: [
+          "Restaura estrutura do córtex",
+          "Indicada para danos químicos severos",
+          "Devolve maciez à fibra",
+          "Recupera o brilho perdido",
+        ],
         variantes: [
           { sku: "13-1K",  tamanho: "1 kg",   preco: 50.00, img: "images/mascara-super-ressecados-1kg.jpeg" },
           { sku: "13-650", tamanho: "650 g", preco: 35.00, img: "images/mascara-super-ressecados-650g.jpeg" },
@@ -170,9 +240,41 @@ const LINHAS = [
     emoji:   "💎",
     banner:  "images/banner-tratamento.jpeg",
     produtos: [
-      { id: 14, nome: "Queratina", desc: "Reconstrução intensa com queratina pura",  tamanho: "1 L",    preco: 50.00, img: "images/queratina-1L.jpeg" },
-      { id: 15, nome: "Colágeno",  desc: "Restaura elasticidade e força dos fios",   tamanho: "500 ml", preco: 50.00, img: "images/colageno-500ml.jpeg" },
-      { id: 16, nome: "Caseína",   desc: "Repõe proteínas e nutre profundamente",   tamanho: "500 ml", preco: 50.00, img: "images/caseina-500ml.jpeg" },
+      {
+        id: 14, nome: "Queratina",
+        desc: "Reconstrução intensa com queratina hidrolisada",
+        detalhes: "A queratina hidrolisada contendo os 20 aminoácidos penetra no córtex refazendo as ligações peptídicas e pontes de enxofre (cisteína), reconstruindo a fibra capilar de dentro para fora.",
+        beneficios: [
+          "Queratina hidrolisada com 20 aminoácidos",
+          "Penetra profundamente no córtex",
+          "Refaz ligações peptídicas",
+          "Restaura pontes de enxofre (cisteína)",
+        ],
+        tamanho: "1 L", preco: 50.00, img: "images/queratina-1L.jpeg"
+      },
+      {
+        id: 15, nome: "Colágeno",
+        desc: "Reconstrução para cabelos emborrachados e quebradiços",
+        detalhes: "Age criando uma liga no córtex em cabelos emborrachados e quebradiços por corte químico, parando instantaneamente o corte químico e reconstruindo a fibra capilar.",
+        beneficios: [
+          "Para o corte químico instantaneamente",
+          "Indicado para cabelos emborrachados",
+          "Reconstrói cabelos quebradiços",
+          "Cria liga no córtex capilar",
+        ],
+        tamanho: "500 ml", preco: 50.00, img: "images/colageno-500ml.jpeg"
+      },
+      {
+        id: 16, nome: "Caseína",
+        desc: "Blend de proteínas para recuperação instantânea",
+        detalhes: "Blend de proteínas e aminoácidos atuando na recuperação instantânea da fibra capilar, repondo nutrientes essenciais ao córtex.",
+        beneficios: [
+          "Blend de proteínas e aminoácidos",
+          "Recuperação instantânea da fibra",
+          "Repõe nutrientes essenciais",
+        ],
+        tamanho: "500 ml", preco: 50.00, img: "images/caseina-500ml.jpeg"
+      },
     ],
   },
   {
@@ -185,7 +287,14 @@ const LINHAS = [
     produtos: [
       {
         id: 17, nome: "Creme de Pentear",
-        desc: "Facilita o penteado e reduz o frizz",
+        desc: "Facilita o penteado e deixa o cabelo macio",
+        detalhes: "Sua função é tratar e deixar o cabelo macio, facilitando muito na hora de pentear sem causar quebras ou nós.",
+        beneficios: [
+          "Tratamento durante o penteado",
+          "Deixa o cabelo macio",
+          "Facilita o desembaraço",
+          "Reduz quebras na escovação",
+        ],
         variantes: [
           { sku: "17-1K",  tamanho: "1 kg",   preco: 50.00, img: "images/creme-pentear-1kg.jpeg" },
           { sku: "17-650", tamanho: "650 g",  preco: 35.00, img: "images/creme-pentear-650g.jpeg" },
@@ -194,13 +303,31 @@ const LINHAS = [
       },
       {
         id: 18, nome: "Ativador de Cachos",
-        desc: "Define e hidrata cachos naturais",
+        desc: "Trata, estabiliza o pH e redefine os cachos",
+        detalhes: "Criado no intuito de tratar a fibra capilar, estabilizar o pH e redefinir os cachos novamente, dando vida e movimento aos fios cacheados.",
+        beneficios: [
+          "Trata a fibra capilar",
+          "Estabiliza o pH dos fios",
+          "Redefine os cachos naturais",
+          "Devolve movimento e vida aos cachos",
+        ],
         variantes: [
           { sku: "18-1L",  tamanho: "1 L",    preco: 100.00, img: "images/ativador-cachos-1L.jpeg" },
           { sku: "18-650", tamanho: "650 g",  preco: 65.00,  img: "images/ativador-cachos-650g.jpeg" },
         ]
       },
-      { id: 19, nome: "Defrizante (Anti Térmico)",   desc: "Controla o frizz e protege do calor",   tamanho: "500 ml", preco: 50.00,  img: "images/defrizante-500ml.jpeg" },
+      {
+        id: 19, nome: "Defrizante (Anti Térmico)",
+        desc: "Protege a fibra do calor da chapinha e secador",
+        detalhes: "Composto por ativos anti térmicos, é utilizado na hora de escovar e pranchar, protegendo a fibra de super aquecimento e evitando o desbotamento da cor.",
+        beneficios: [
+          "Ativos anti térmicos",
+          "Protege da escova e chapinha",
+          "Evita super aquecimento da fibra",
+          "Previne desbotamento da cor",
+        ],
+        tamanho: "500 ml", preco: 50.00, img: "images/defrizante-500ml.jpeg"
+      },
     ],
   },
   {
@@ -211,7 +338,19 @@ const LINHAS = [
     cor:     "#EEE8D5",
     emoji:   "✦",
     produtos: [
-      { id: 20, nome: "Óleo Bifásico para Escovação", desc: "Bi-fase nutritivo para brilho e maciez", tamanho: "300 ml", preco: 50.00, img: "images/oleo-bifasico-300ml.jpeg" },
+      {
+        id: 20, nome: "Óleo Bifásico para Escovação",
+        desc: "Bifásico (aquosa + oleosa) com proteção térmica",
+        detalhes: "Separado em duas fases — aquosa e oleosa — tem a função principal de tratar a fibra e proteger do super aquecimento, evitando o desbotamento da fibra capilar na hora de escovar e pranchar.",
+        beneficios: [
+          "Fórmula em duas fases (aquosa + oleosa)",
+          "Trata enquanto protege",
+          "Protetor térmico para escova e chapinha",
+          "Previne desbotamento da fibra",
+          "Brilho e maciez instantâneos",
+        ],
+        tamanho: "300 ml", preco: 50.00, img: "images/oleo-bifasico-300ml.jpeg"
+      },
     ],
   },
   {
