@@ -535,7 +535,7 @@ function buildNav() {
     document.getElementById('mobile-nav-list'),
     document.getElementById('footer-links'),
   ];
-  const items = LINHAS.map(l =>
+  const items = getLinhasVisiveis().map(l =>
     `<li><a href="#${l.id}" class="nav-link" data-id="${l.id}">${l.nome}</a></li>`
   ).join('');
   lists.forEach(ul => { if (ul) ul.innerHTML = items; });
@@ -547,9 +547,9 @@ function buildNav() {
 function buildCarousel() {
   const track = document.getElementById('carousel-track');
   if (!track) return;
-  track.innerHTML = LINHAS.map(l => `
+  track.innerHTML = getLinhasVisiveis().map(l => `
     <div class="carousel-item" data-id="${l.id}" role="button" tabindex="0" aria-label="Ver linha ${l.nome}">
-      <div class="carousel-circle" style="background:${l.cor}">
+      <div class="carousel-circle">
         <span>${l.emoji}</span>
       </div>
       <span class="carousel-label">${l.nome}</span>
@@ -581,10 +581,27 @@ function scrollToLine(id) {
 /* ============================================================
    PRODUCT SECTIONS
    ============================================================ */
+/**
+ * Verifica se um produto tem foto real cadastrada.
+ * Para produtos com variantes, basta UMA variante ter foto.
+ */
+function temFoto(p) {
+  if (p.variantes && p.variantes.length) return p.variantes.some(v => v.img);
+  return Boolean(p.img);
+}
+
+/** Retorna apenas as linhas com produtos que têm foto */
+function getLinhasVisiveis() {
+  return LINHAS
+    .map(l => ({ ...l, produtos: l.produtos.filter(temFoto) }))
+    .filter(l => l.produtos.length > 0);
+}
+
 function buildProductSections() {
   const container = document.getElementById('product-sections');
   if (!container) return;
-  container.innerHTML = LINHAS.map(l => {
+  const linhasVisiveis = getLinhasVisiveis();
+  container.innerHTML = linhasVisiveis.map(l => {
     // Visual do "badge" — usa banner se existir, senão usa emoji
     const badgeHtml = l.banner
       ? `<div class="line-banner-img" style="background:${l.cor}">

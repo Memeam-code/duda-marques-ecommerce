@@ -2,14 +2,16 @@
    BELLA HAIR — styles.css
    ============================================================ */
 
-/* ── Variables ── */
+/* ── Variables ── PALETA OFICIAL DUDA MARQUES ── */
 :root {
-  --primary:     #C8A96E;
-  --primary-dk:  #A8883D;
-  --dark:        #1A1A1A;
-  --text:        #3D3D3D;
-  --muted:       #888;
-  --bg:          #FAFAF8;
+  --primary:     #C8A96E;   /* Dourado Champagne - tags, bordas, detalhes */
+  --primary-dk:  #A8893A;   /* Dourado Escuro - hover, links ativos */
+  --brown:       #2C1A0E;   /* Marrom Profundo - hero, rodapé */
+  --dark:        #1A1A1A;   /* Preto Elegante - botões, títulos, preços */
+  --text:        #3D3D3D;   /* Grafite Médio - textos, nav */
+  --muted:       #8B7E6E;
+  --bg:          #FAFAF8;   /* Off-White Quente - fundo principal */
+  --cream:       #EEE8D5;   /* Bege Creme - fundo das seções de categoria */
   --white:       #FFFFFF;
   --border:      #E8E3DB;
   --card-bg:     #FFFFFF;
@@ -323,13 +325,22 @@ main { padding-top: calc(var(--announce-h) + var(--header-h)); }
 .hero {
   min-height: 92vh;
   background:
-    linear-gradient(135deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,.3) 100%),
-    linear-gradient(to bottom right, #2C1A0E, #5A3A1A, #8B6340);
+    radial-gradient(ellipse at center, rgba(200,169,110,.12) 0%, transparent 60%),
+    linear-gradient(135deg, var(--brown) 0%, #1F1108 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(200,169,110,.08) 0%, transparent 40%);
+  pointer-events: none;
 }
 .hero-content { max-width: 680px; }
 .hero-eyebrow {
@@ -419,6 +430,8 @@ main { padding-top: calc(var(--announce-h) + var(--header-h)); }
   align-items: center;
   justify-content: center;
   font-size: 2.2rem;
+  background: var(--cream);
+  color: var(--primary);
   border: 3px solid transparent;
   transition: border-color var(--transition), box-shadow var(--transition);
   position: relative;
@@ -457,16 +470,23 @@ main { padding-top: calc(var(--announce-h) + var(--header-h)); }
 .carousel-arrow:hover { background: var(--dark); color: var(--white); border-color: var(--dark); }
 
 /* ============================================================
-   PRODUCT LINE SECTIONS  (estilo Kérastase)
+   PRODUCT LINE SECTIONS  (estilo Kérastase — bege creme uniforme)
    ============================================================ */
 .line-section {
   padding: 0 0 80px;
+  background: var(--white);
 }
+.line-section:nth-child(even) { background: var(--cream); }
 
-/* Banner colorido do topo da seção */
+/* Banner do topo da seção — sempre bege creme p/ unidade visual */
 .line-section-header {
   padding: 52px 0;
   margin-bottom: 52px;
+  background: var(--cream) !important;  /* sobrescreve cor da linha */
+  border-bottom: 1px solid rgba(168,137,58,.15);
+}
+.line-section:nth-child(even) .line-section-header {
+  background: var(--white) !important;  /* alterna p/ off-white */
 }
 .line-header-inner {
   display: flex;
@@ -477,14 +497,15 @@ main { padding-top: calc(var(--announce-h) + var(--header-h)); }
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  background: rgba(255,255,255,.55);
+  background: var(--white);
+  border: 1px solid rgba(200,169,110,.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
+  font-size: 2.6rem;
   flex-shrink: 0;
-  box-shadow: 0 4px 20px rgba(0,0,0,.08);
-  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 20px rgba(44,26,14,.08);
+  color: var(--primary);
 }
 
 /* Banner com imagem (foto promocional da linha) */
@@ -625,7 +646,16 @@ main { padding-top: calc(var(--announce-h) + var(--header-h)); }
   aspect-ratio: 1;
   overflow: hidden;
   position: relative;
-  background: #F0EDE8;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-img img {
+  max-width: 88%;
+  max-height: 88%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 16px rgba(44,26,14,.12));
 }
 .product-img .img-placeholder {
   width: 100%;
@@ -633,14 +663,12 @@ main { padding-top: calc(var(--announce-h) + var(--header-h)); }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
-  color: var(--muted);
-  background: linear-gradient(135deg, #F8F5F0, #EDE8E0);
+  font-size: 2.4rem;
+  color: var(--primary);
+  background: var(--cream);
+  opacity: .5;
 }
 .product-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   transition: transform .4s ease;
 }
 .product-card:hover .product-img img { transform: scale(1.06); }
@@ -1632,12 +1660,13 @@ form .field-row:last-of-type { margin-bottom: 0; }
   left: 0;
   width: 100%;
   height: 44px;
-  background: var(--dark);
+  background: var(--brown);
   color: var(--white);
   z-index: 800;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-top: 1px solid rgba(200,169,110,.15);
 }
 .bottom-bar-inner {
   display: flex;
@@ -1663,7 +1692,7 @@ body { padding-bottom: 44px; }
    FOOTER
    ============================================================ */
 .footer {
-  background: var(--dark);
+  background: var(--brown);
   color: rgba(255,255,255,.85);
   padding: 60px 0 0;
 }
