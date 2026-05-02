@@ -20,7 +20,7 @@
   --shadow:      0 4px 24px rgba(0,0,0,.08);
   --shadow-lg:   0 12px 48px rgba(0,0,0,.15);
   --header-h:    110px;
-  --announce-h:  36px;
+  --announce-h:  0px;
   --transition:  .25s ease;
   --font-head:   'Playfair Display', Georgia, serif;
   --font-body:   'Montserrat', Arial, sans-serif;

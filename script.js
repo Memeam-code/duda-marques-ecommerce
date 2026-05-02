@@ -39,7 +39,14 @@ const LINHAS = [
     produtos: [
       {
         id: 1, nome: "Shampoo E.D.T.A",
-        desc: "Remove resíduos minerais e purifica os fios",
+        desc: "Limpeza profunda + neutralização de metais pesados",
+        detalhes: "Composto pelo ativo etilenodiaminotetracético (quelador de metais pesados), esse shampoo efetua uma limpeza profunda no córtex e ao mesmo tempo neutraliza a ação dos metais pesados, evitando futuros cortes químicos com ativos incompatíveis.",
+        beneficios: [
+          "Quelador de metais pesados (E.D.T.A)",
+          "Limpeza profunda do córtex",
+          "Neutraliza metais residuais",
+          "Previne cortes químicos futuros",
+        ],
         variantes: [
           { sku: "1-1L",   tamanho: "1 L",    preco: 50.00, img: "images/shampoo-edta-1L.jpeg" },
           { sku: "1-300",  tamanho: "300 ml", preco: 25.00, img: "images/shampoo-edta-300ml.jpeg" },
@@ -47,7 +54,14 @@ const LINHAS = [
       },
       {
         id: 2, nome: "Shampoo Hidratante",
-        desc: "Hidratação profunda para cabelos secos",
+        desc: "Limpeza profunda com maciez e brilho",
+        detalhes: "Tem a função de efetuar uma limpeza profunda no córtex, deixando o cabelo macio, sedoso e com brilho natural intenso.",
+        beneficios: [
+          "Limpeza profunda do córtex",
+          "Deixa o cabelo macio",
+          "Devolve o brilho natural",
+          "Indicado para uso diário",
+        ],
         variantes: [
           { sku: "2-1L",   tamanho: "1 L",    preco: 50.00, img: "images/shampoo-hidratante-1L.jpeg" },
           { sku: "2-300",  tamanho: "300 ml", preco: 25.00, img: "images/shampoo-hidratante-300ml.jpeg" },
@@ -71,14 +85,15 @@ const LINHAS = [
       {
         id: 4,
         nome: "Shampoo Mentolado",
-        desc: "Limpeza eficaz com sensação refrescante de menta. Auxilia o crescimento e saúde dos fios.",
+        desc: "Limpeza profunda com sensação refrescante e ação antisséptica",
         classe: "frio",
-        detalhes: "Com extrato de menta e óleo essencial natural, este shampoo proporciona uma limpeza profunda enquanto refresca o couro cabeludo. Ideal para cabelos oleosos e quem busca uma sensação revigorante a cada lavagem.",
+        detalhes: "Tem a função de fazer uma limpeza profunda no córtex, combatendo a oleosidade do couro cabeludo. Causa leve vasodilatação (estimulando a circulação local) e tem ação antisséptica suave, dando aquela sensação de couro cabeludo \"geladinho\" e limpo.",
         beneficios: [
-          "Limpeza profunda dos fios",
-          "Sensação refrescante e estimulante",
-          "Auxilia no crescimento saudável dos fios",
-          "Controla a oleosidade do couro cabeludo",
+          "Limpeza profunda do córtex",
+          "Combate a oleosidade do couro cabeludo",
+          "Leve vasodilatação (estimula a circulação)",
+          "Ação antisséptica suave",
+          "Sensação refrescante \"geladinha\"",
         ],
         modoUso: "Aplique no cabelo úmido, massageie suavemente o couro cabeludo, deixe agir por 1 a 2 minutos para sentir a sensação refrescante e enxágue.",
         variantes: [
@@ -88,7 +103,14 @@ const LINHAS = [
       },
       {
         id: 5, nome: "Shampoo Matizador",
-        desc: "Neutraliza tons amarelados em cabelos loiros e grisalhos",
+        desc: "Limpeza profunda + efeito platinado",
+        detalhes: "Composto por pigmento 100% aniônico, tem a função de efetuar uma limpeza profunda no córtex e devolver o efeito platinado aos cabelos loiros e grisalhos.",
+        beneficios: [
+          "Pigmento 100% aniônico",
+          "Limpeza profunda do córtex",
+          "Devolve o efeito platinado",
+          "Ideal para loiros e grisalhos",
+        ],
         tamanho: "300 ml", preco: 50.00,
         img: "images/shampoo-matizador-300ml.jpeg"
       },
@@ -987,7 +1009,7 @@ async function fetchCEP() {
 
 /* ── Step 1 validation ── */
 function validateStep1() {
-  const fields = ['f-nome','f-email','f-tel','f-cep','f-rua','f-num','f-bairro','f-cidade','f-uf'];
+  const fields = ['f-nome','f-tel','f-cep','f-rua','f-num','f-bairro','f-cidade','f-uf'];
   let ok = true;
   fields.forEach(id => {
     const el = document.getElementById(id);
@@ -1002,7 +1024,6 @@ function validateStep1() {
   if (!ok) { showToast('⚠️ Preencha todos os campos obrigatórios'); return false; }
   checkoutData = {
     nome:        document.getElementById('f-nome').value.trim(),
-    email:       document.getElementById('f-email').value.trim(),
     tel:         document.getElementById('f-tel').value.trim(),
     cep:         document.getElementById('f-cep').value.trim(),
     rua:         document.getElementById('f-rua').value.trim(),
@@ -1070,7 +1091,6 @@ function renderReview() {
       <p class="review-section-title">Dados do Cliente</p>
       <div class="review-row"><span>Nome</span><span>${checkoutData.nome}</span></div>
       <div class="review-row"><span>WhatsApp</span><span>${checkoutData.tel}</span></div>
-      <div class="review-row"><span>E-mail</span><span>${checkoutData.email}</span></div>
     </div>
     <div class="review-section">
       <p class="review-section-title">Endereço de Entrega</p>
@@ -1109,14 +1129,13 @@ ${itens}
 *Dados do Cliente:*
 Nome: ${checkoutData.nome}
 WhatsApp: ${checkoutData.tel}
-E-mail: ${checkoutData.email}
 Endereço: ${addr}${checkoutData.complemento ? '\nComplemento: ' + checkoutData.complemento : ''}`;
 
   const encoded = encodeURIComponent(msg);
   // Salva pedido no Supabase
   saveOrderToSupabase({
     customer_name:        checkoutData.nome,
-    customer_email:       checkoutData.email,
+    customer_email:       null,
     customer_phone:       checkoutData.tel,
     address_street:       checkoutData.rua,
     address_number:       checkoutData.numero,
