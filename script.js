@@ -96,6 +96,13 @@ const LINHAS = [
     emoji:   "✨",
     produtos: [
       {
+        id: 24, nome: "Máscara Antioxidante", desc: "Protege os fios dos radicais livres",
+        variantes: [
+          { sku: "24-1K",   tamanho: "1 kg",   preco: 80.00, img: "images/mascara-antioxidante-1kg.jpeg" },
+          { sku: "24-650",  tamanho: "650 g", preco: 55.00, img: "images/mascara-antioxidante-650g.jpeg" },
+        ]
+      },
+      {
         id: 6, nome: "Máscara Lipídica", desc: "Nutrição lipídica profunda",
         variantes: [
           { sku: "6-1K",   tamanho: "1 kg",   preco: 50.00, img: "images/mascara-lipidica-1kg.jpeg" },
@@ -213,8 +220,8 @@ const LINHAS = [
     cor:     "#E8DDF0",
     emoji:   "🌟",
     produtos: [
-      { id: 21, nome: "Progressiva de Formol", desc: "Alisamento intenso de longa duração",   tamanho: "1 kg", preco: 100.00, img: "images/progressiva-formol-1kg.jpeg" },
-      { id: 22, nome: "Progressiva Ácida",     desc: "Alisamento gradual com pH controlado",  tamanho: "1 kg", preco: 100.00, img: "images/progressiva-acida-1kg.jpeg" },
+      { id: 21, nome: "Progressiva Orgânica", desc: "Alisamento natural sem formol, com ativos orgânicos",   tamanho: "1 L", preco: 100.00, img: "images/progressiva-organica-1000ml.jpeg" },
+      { id: 22, nome: "Progressiva Redutora", desc: "Reduz volume e alinha os fios com efeito duradouro",   tamanho: "1 L", preco: 100.00, img: "images/progressiva-redutora-1000ml.jpeg" },
     ],
   },
   {
