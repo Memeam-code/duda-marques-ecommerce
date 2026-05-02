@@ -94,6 +94,7 @@ const LINHAS = [
     desc:    "Tratamentos intensivos para recuperar a beleza e saúde dos seus fios.",
     cor:     "#F0DDE8",
     emoji:   "✨",
+    banner:  "images/banner-mascaras.jpeg",
     produtos: [
       {
         id: 24, nome: "Máscara Antioxidante", desc: "Protege os fios dos radicais livres",
@@ -167,6 +168,7 @@ const LINHAS = [
     desc:    "Tecnologia avançada para reconstrução completa dos fios danificados.",
     cor:     "#E8F0DD",
     emoji:   "💎",
+    banner:  "images/banner-tratamento.jpeg",
     produtos: [
       { id: 14, nome: "Queratina", desc: "Reconstrução intensa com queratina pura",  tamanho: "1 L",    preco: 50.00, img: "images/queratina-1L.jpeg" },
       { id: 15, nome: "Colágeno",  desc: "Restaura elasticidade e força dos fios",   tamanho: "500 ml", preco: 50.00, img: "images/colageno-500ml.jpeg" },
@@ -219,6 +221,7 @@ const LINHAS = [
     desc:    "Alisamento e selagem para fios lisos, brilhantes e sem frizz duradouros.",
     cor:     "#E8DDF0",
     emoji:   "🌟",
+    banner:  "images/banner-progressivas.jpeg",
     produtos: [
       { id: 21, nome: "Progressiva Orgânica", desc: "Alisamento natural sem formol, com ativos orgânicos",   tamanho: "1 L", preco: 100.00, img: "images/progressiva-organica-1000ml.jpeg" },
       { id: 22, nome: "Progressiva Redutora", desc: "Reduz volume e alinha os fios com efeito duradouro",   tamanho: "1 L", preco: 100.00, img: "images/progressiva-redutora-1000ml.jpeg" },
@@ -419,14 +422,23 @@ function scrollToLine(id) {
 function buildProductSections() {
   const container = document.getElementById('product-sections');
   if (!container) return;
-  container.innerHTML = LINHAS.map(l => `
+  container.innerHTML = LINHAS.map(l => {
+    // Visual do "badge" — usa banner se existir, senão usa emoji
+    const badgeHtml = l.banner
+      ? `<div class="line-banner-img" style="background:${l.cor}">
+           <img src="${l.banner}" alt="${l.nome}" loading="lazy"
+                onerror="this.parentElement.innerHTML='<div class=&quot;line-emoji-badge&quot;>${l.emoji}</div>'" />
+         </div>`
+      : `<div class="line-emoji-badge">${l.emoji}</div>`;
+
+    return `
     <section class="line-section" id="${l.id}" aria-label="Linha ${l.nome}">
 
       <!-- Banner colorido da linha (estilo Kérastase) -->
-      <div class="line-section-header" style="background:${l.cor}">
+      <div class="line-section-header ${l.banner ? 'has-banner' : ''}" style="background:${l.cor}">
         <div class="container">
           <div class="line-header-inner">
-            <div class="line-emoji-badge">${l.emoji}</div>
+            ${badgeHtml}
             <div>
               <p class="line-tag">${l.tag}</p>
               <h2 class="line-name">${l.nome}</h2>
@@ -444,7 +456,8 @@ function buildProductSections() {
       </div>
 
     </section>
-  `).join('');
+  `;
+  }).join('');
 }
 
 function productCard(p, l) {

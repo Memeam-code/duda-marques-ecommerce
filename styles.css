@@ -486,6 +486,38 @@ main { padding-top: calc(var(--announce-h) + var(--header-h)); }
   box-shadow: 0 4px 20px rgba(0,0,0,.08);
   backdrop-filter: blur(4px);
 }
+
+/* Banner com imagem (foto promocional da linha) */
+.line-banner-img {
+  width: 280px;
+  height: 200px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(255,255,255,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,.12);
+  transition: transform var(--transition);
+}
+.line-banner-img:hover { transform: scale(1.02); }
+.line-banner-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.line-section-header.has-banner { padding: 60px 0; }
+
+@media (max-width: 768px) {
+  .line-banner-img {
+    width: 100%;
+    max-width: 320px;
+    height: 200px;
+    margin: 0 auto;
+  }
+}
 .line-tag {
   font-size: .65rem;
   font-weight: 700;
