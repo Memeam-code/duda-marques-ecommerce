@@ -307,6 +307,7 @@ const LINHAS = [
     desc:    "O toque final perfeito para definição, brilho e proteção dos seus fios.",
     cor:     "#F0E8DD",
     emoji:   "💫",
+    banner:  "images/banner-finalizadores.png",
     produtos: [
       {
         id: 17, nome: "Creme de Pentear",
