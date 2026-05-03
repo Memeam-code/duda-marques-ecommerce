@@ -36,6 +36,7 @@ const LINHAS = [
     desc:    "Limpeza profunda e cuidado especializado para cada tipo de cabelo.",
     cor:     "#DDE8F0",
     emoji:   "🧴",
+    banner:  "images/banner-shampoos.jpeg",
     produtos: [
       {
         id: 1, nome: "Shampoo E.D.T.A",
