@@ -319,7 +319,6 @@ const LINHAS = [
           "Reduz quebras na escovação",
         ],
         variantes: [
-          { sku: "17-1K",  tamanho: "1 kg",   preco: 50.00, img: "images/creme-pentear-1kg.jpeg" },
           { sku: "17-650", tamanho: "650 g",  preco: 35.00, img: "images/creme-pentear-650g.jpeg" },
           { sku: "17-300", tamanho: "300 g",  preco: 20.00, img: "images/creme-pentear-300g.jpeg" },
         ]
