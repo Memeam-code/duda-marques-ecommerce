@@ -320,6 +320,7 @@ const LINHAS = [
           "Reduz quebras na escovação",
         ],
         variantes: [
+          { sku: "17-1K",  tamanho: "1 kg",   preco: 50.00, img: "images/creme-pentear-1kg.jpeg" },
           { sku: "17-650", tamanho: "650 g",  preco: 35.00, img: "images/creme-pentear-650g.jpeg" },
           { sku: "17-300", tamanho: "300 g",  preco: 20.00, img: "images/creme-pentear-300g.jpeg" },
         ]
@@ -517,11 +518,7 @@ function applyConfig() {
   const ftWa = document.getElementById('footer-whatsapp');
   if (ftWa) { ftWa.href = whatsLink; ftWa.textContent = CONFIG.WHATSAPP_DISPLAY; }
 
-  // Frete
-  const pp = document.getElementById('price-pac');
-  const ps = document.getElementById('price-sedex');
-  if (pp) pp.textContent = `R$ ${fmt(CONFIG.FRETE_PAC)}`;
-  if (ps) ps.textContent = `R$ ${fmt(CONFIG.FRETE_SEDEX)}`;
+  // Frete — preços não exibidos; calculados pelo vendedor
 
   // CSS primary color
   document.documentElement.style.setProperty('--primary', CONFIG.COR_PRIMARIA);
@@ -914,17 +911,8 @@ function renderCartBody() {
   `;}).join('');
 
   const total  = cartTotal();
-  const falta  = Math.max(0, CONFIG.FRETE_GRATIS - total);
-  const pct    = Math.min(100, (total / CONFIG.FRETE_GRATIS) * 100);
-  const gratis = total >= CONFIG.FRETE_GRATIS;
 
   footer.innerHTML = `
-    <div class="cart-progress"><div class="cart-progress-bar" style="width:${pct}%"></div></div>
-    <p class="cart-free-shipping">
-      ${gratis
-        ? '🎉 Você ganhou frete grátis!'
-        : `Faltam R$ ${fmt(falta)} para frete grátis`}
-    </p>
     <div class="cart-subtotal-row">
       <span>Subtotal</span>
       <span>R$ ${fmt(total)}</span>
@@ -1061,8 +1049,6 @@ function renderShippingSummary() {
   if (!el) return;
   const sub  = cartTotal();
   const tipo = document.querySelector('input[name="frete"]:checked')?.value || 'pac';
-  const fv   = tipo === 'sedex' ? CONFIG.FRETE_SEDEX : CONFIG.FRETE_PAC;
-  const freeShip = sub >= CONFIG.FRETE_GRATIS;
   el.innerHTML = `
     <div class="order-mini-summary">
       ${cart.map(i => `
@@ -1071,12 +1057,12 @@ function renderShippingSummary() {
           <span>R$ ${fmt(i.preco * i.qty)}</span>
         </div>`).join('')}
       <div class="summary-row">
-        <span>Frete</span>
-        <span>${freeShip ? '<span style="color:var(--green)">Grátis</span>' : `R$ ${fmt(fv)}`}</span>
+        <span>Frete (${tipo.toUpperCase()})</span>
+        <span style="color:var(--text);font-style:italic">A calcular</span>
       </div>
       <div class="summary-row total">
-        <span>Total</span>
-        <span>R$ ${fmt(sub + (freeShip ? 0 : fv))}</span>
+        <span>Subtotal produtos</span>
+        <span>R$ ${fmt(sub)}</span>
       </div>
     </div>`;
 }
@@ -1086,10 +1072,7 @@ function renderReview() {
   const el = document.getElementById('review-block');
   if (!el) return;
   const tipo = document.querySelector('input[name="frete"]:checked')?.value || 'pac';
-  const fv   = tipo === 'sedex' ? CONFIG.FRETE_SEDEX : CONFIG.FRETE_PAC;
   const sub  = cartTotal();
-  const freeShip = sub >= CONFIG.FRETE_GRATIS;
-  const total = sub + (freeShip ? 0 : fv);
   const addr = `${checkoutData.rua}, ${checkoutData.numero}${checkoutData.complemento ? ', '+checkoutData.complemento : ''} — ${checkoutData.bairro}, ${checkoutData.cidade} - ${checkoutData.uf}, CEP ${checkoutData.cep}`;
   el.innerHTML = `
     <div class="review-section">
@@ -1102,8 +1085,8 @@ function renderReview() {
           </div>
         </div>`).join('')}
       <div class="review-total">
-        <span>TOTAL</span>
-        <span>R$ ${fmt(total)}</span>
+        <span>SUBTOTAL PRODUTOS</span>
+        <span>R$ ${fmt(sub)}</span>
       </div>
     </div>
     <div class="review-section">
@@ -1119,7 +1102,7 @@ function renderReview() {
       <p class="review-section-title">Forma de Envio</p>
       <div class="review-row">
         <span>${tipo === 'sedex' ? '🚀 SEDEX' : '📦 PAC'}</span>
-        <span>${freeShip ? '<span style="color:var(--green)">Grátis</span>' : `R$ ${fmt(fv)}`}</span>
+        <span style="color:var(--text);font-style:italic">Frete a calcular</span>
       </div>
     </div>`;
 }
@@ -1127,10 +1110,7 @@ function renderReview() {
 /* ── Confirm → WhatsApp ── */
 function confirmOrder() {
   const tipo = document.querySelector('input[name="frete"]:checked')?.value || 'pac';
-  const fv   = tipo === 'sedex' ? CONFIG.FRETE_SEDEX : CONFIG.FRETE_PAC;
   const sub  = cartTotal();
-  const freeShip = sub >= CONFIG.FRETE_GRATIS;
-  const total = sub + (freeShip ? 0 : fv);
   const addr = `${checkoutData.rua}, ${checkoutData.numero}${checkoutData.complemento ? ', '+checkoutData.complemento : ''}, ${checkoutData.bairro}, ${checkoutData.cidade} - ${checkoutData.uf}, CEP: ${checkoutData.cep}`;
   const itens = cart.map(i => {
     const tam = i.tamanho ? ` (${i.tamanho})` : '';
@@ -1141,9 +1121,8 @@ function confirmOrder() {
 *Produtos:*
 ${itens}
 
-*Subtotal:* R$ ${fmt(sub)}
-*Frete (${tipo.toUpperCase()}):* ${freeShip ? 'Grátis' : `R$ ${fmt(fv)}`}
-*TOTAL:* R$ ${fmt(total)}
+*Subtotal produtos:* R$ ${fmt(sub)}
+*Envio:* ${tipo.toUpperCase()} — frete a calcular
 
 *Dados do Cliente:*
 Nome: ${checkoutData.nome}
@@ -1164,10 +1143,10 @@ Endereço: ${addr}${checkoutData.complemento ? '\nComplemento: ' + checkoutData.
     address_state:        checkoutData.uf,
     address_cep:          checkoutData.cep,
     shipping_method:      tipo,
-    shipping_cost:        freeShip ? 0 : fv,
+    shipping_cost:        null,
     items:                cart.map(i => ({ sku: i.sku, nome: i.nome, tamanho: i.tamanho || null, preco: i.preco, qty: i.qty })),
     subtotal:             sub,
-    total:                total,
+    total:                sub,
     status:               'pending',
   });
 
