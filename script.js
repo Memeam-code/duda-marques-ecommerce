@@ -37,7 +37,7 @@ const LINHAS = [
     cor:     "#DDE8F0",
     emoji:   "🧴",
     icone:   "images/banner-shampoos-agua.png",
-    banner:  "images/banner-shampoos-agua.png",
+    banner:  "images/banner-shampoos.jpeg",
     produtos: [
       {
         id: 1, nome: "Shampoo E.D.T.A",
@@ -126,7 +126,7 @@ const LINHAS = [
     cor:     "#F0DDE8",
     emoji:   "✨",
     icone:   "images/banner-mascaras-rosa.png",
-    banner:  "images/banner-mascaras-rosa.png",
+    banner:  "images/banner-mascaras.jpeg",
     produtos: [
       {
         id: 24, nome: "Máscara Antioxidante",
@@ -264,7 +264,7 @@ const LINHAS = [
     cor:     "#E8F0DD",
     emoji:   "💎",
     icone:   "images/banner-tratamento-proteina.png",
-    banner:  "images/banner-tratamento-proteina.png",
+    banner:  "images/banner-tratamento.jpeg",
     produtos: [
       {
         id: 14, nome: "Queratina",
@@ -311,7 +311,7 @@ const LINHAS = [
     cor:     "#F0E8DD",
     emoji:   "💫",
     icone:   "images/banner-finalizadores-seda.png",
-    banner:  "images/banner-finalizadores-seda.png",
+    banner:  "images/banner-finalizadores.png",
     produtos: [
       {
         id: 17, nome: "Creme de Pentear",
@@ -366,7 +366,7 @@ const LINHAS = [
     cor:     "#EEE8D5",
     emoji:   "✦",
     icone:   "images/banner-oleo-dourado.png",
-    banner:  "images/banner-oleo-dourado.png",
+    banner:  "images/banner-oleo.jpeg",
     produtos: [
       {
         id: 20, nome: "Óleo Bifásico para Escovação",
@@ -391,7 +391,7 @@ const LINHAS = [
     cor:     "#E8DDF0",
     emoji:   "🌟",
     icone:   "images/banner-progressivas-roxo.png",
-    banner:  "images/banner-progressivas-roxo.png",
+    banner:  "images/banner-progressivas.jpeg",
     produtos: [
       { id: 21, nome: "Progressiva Orgânica", desc: "Alisamento natural sem formol, com ativos orgânicos",   tamanho: "1 L", preco: 100.00, img: "images/progressiva-organica-1000ml.jpeg" },
       { id: 22, nome: "Progressiva Redutora", desc: "Reduz volume e alinha os fios com efeito duradouro",   tamanho: "1 L", preco: 100.00, img: "images/progressiva-redutora-1000ml.jpeg" },
@@ -405,7 +405,7 @@ const LINHAS = [
     cor:     "#DCE8F0",
     emoji:   "🌸",
     icone:   "images/banner-corporal-creme.png",
-    banner:  "images/banner-corporal.png",
+    banner:  "images/banner-corporal.png",   /* foto real do produto */
     produtos: [
       { id: 23, nome: "Creme Corporal Hidratante", desc: "Hidratação intensa e nutrição profunda da pele", tamanho: "650 g", preco: 50.00, img: "images/creme-corporal-650g.jpeg" },
     ],
