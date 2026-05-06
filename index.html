@@ -10,6 +10,11 @@
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://unpkg.com/lenis@1.3.3/dist/lenis.min.js"></script>
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
@@ -348,6 +353,9 @@
       <a href="https://wa.me/5521985873917" target="_blank" class="bar-item bar-cta" id="bar-wa-link">💬 FALE CONOSCO</a>
     </div>
   </div>
+
+  <!-- Canvas cursor fluido -->
+  <canvas id="fluid-cursor-canvas"></canvas>
 
   <script src="script.js"></script>
 </body>
