@@ -1404,8 +1404,7 @@ document.addEventListener('DOMContentLoaded', () => {
   startSnowEffect();
   setTimeout(startTiltEffect, 100);
   initLenis();
-  initFluidCursor();
-  setTimeout(initGSAP, 120); // aguarda DOM do buildProductSections
+  setTimeout(initGSAP, 120);
 });
 
 /* ============================================================
@@ -1413,10 +1412,15 @@ document.addEventListener('DOMContentLoaded', () => {
    ============================================================ */
 function initLenis() {
   if (typeof Lenis === 'undefined') return;
+  // Só ativa em desktop (mouse) — evita conflito com scroll touch do mobile
+  const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  if (isTouch) return;
+
   const lenis = new Lenis({
-    duration:   1.4,
-    easing:     t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    duration:    1.4,
+    easing:      t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smoothWheel: true,
+    touchMultiplier: 0,
   });
 
   // Integra com GSAP ScrollTrigger
@@ -1446,33 +1450,40 @@ function initGSAP() {
   // -- Hero: título entra suave --
   const heroTitle = document.querySelector('.hero-title');
   if (heroTitle) {
-    gsap.from(heroTitle, {
-      y: 50, opacity: 0, duration: 1.1,
-      ease: 'power3.out', delay: 0.2,
-    });
+    gsap.fromTo(heroTitle,
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.1, ease: 'power3.out', delay: 0.2, clearProps: 'all' }
+    );
   }
-  const heroBadge = document.querySelector('.hero-badge');
-  if (heroBadge) {
-    gsap.from(heroBadge, {
-      y: 20, opacity: 0, duration: 0.8,
-      ease: 'power2.out', delay: 0.1,
-    });
+  const heroEyebrow = document.querySelector('.hero-eyebrow');
+  if (heroEyebrow) {
+    gsap.fromTo(heroEyebrow,
+      { y: 16, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out', delay: 0.1, clearProps: 'all' }
+    );
+  }
+  const heroSub = document.querySelector('.hero-sub');
+  if (heroSub) {
+    gsap.fromTo(heroSub,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out', delay: 0.35, clearProps: 'all' }
+    );
   }
   const heroCtas = document.querySelector('.hero-ctas');
   if (heroCtas) {
-    gsap.from(heroCtas, {
-      y: 30, opacity: 0, duration: 0.9,
-      ease: 'power2.out', delay: 0.45,
-    });
+    gsap.fromTo(heroCtas,
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.9, ease: 'power2.out', delay: 0.5, clearProps: 'all' }
+    );
   }
 
   // -- Logo borboleta: pulsa ao carregar --
   const butterfly = document.querySelector('.logo-butterfly');
   if (butterfly) {
-    gsap.from(butterfly, {
-      scale: 0, opacity: 0, rotation: -20,
-      duration: 0.9, ease: 'back.out(1.7)', delay: 0.1,
-    });
+    gsap.fromTo(butterfly,
+      { scale: 0, opacity: 0, rotation: -20 },
+      { scale: 1, opacity: 1, rotation: 0, duration: 0.9, ease: 'back.out(1.7)', delay: 0.1, clearProps: 'all' }
+    );
   }
 
   // -- Carrossel de linhas --
@@ -1522,88 +1533,3 @@ function initGSAP() {
   }
 }
 
-/* ============================================================
-   FLUID CURSOR
-   ============================================================ */
-function initFluidCursor() {
-  const canvas = document.getElementById('fluid-cursor-canvas');
-  if (!canvas) return;
-
-  // Só ativa em dispositivos com mouse (não touch)
-  const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  if (!hasHover) { canvas.style.display = 'none'; return; }
-
-  const ctx = canvas.getContext('2d');
-  let W = window.innerWidth, H = window.innerHeight;
-  canvas.width = W; canvas.height = H;
-
-  window.addEventListener('resize', () => {
-    W = window.innerWidth; H = window.innerHeight;
-    canvas.width = W; canvas.height = H;
-  });
-
-  // Círculo principal (cursor) e ponto de mira
-  const cursor   = { x: W / 2, y: H / 2 };
-  const follower = { x: W / 2, y: H / 2 };
-  let   isHover  = false;
-
-  window.addEventListener('mousemove', e => {
-    cursor.x = e.clientX;
-    cursor.y = e.clientY;
-  });
-
-  // Detecta hover em elementos clicáveis
-  document.addEventListener('mouseover', e => {
-    isHover = !!(e.target.closest('a, button, .size-btn, .product-card, .carousel-item'));
-  });
-  document.addEventListener('mouseout', () => { isHover = false; });
-
-  // Trilha de partículas fluidas
-  const trail = Array.from({ length: 18 }, () => ({
-    x: W / 2, y: H / 2, alpha: 0,
-  }));
-
-  function lerp(a, b, t) { return a + (b - a) * t; }
-
-  function drawFrame() {
-    ctx.clearRect(0, 0, W, H);
-
-    // Follower segue o cursor com inércia
-    follower.x = lerp(follower.x, cursor.x, 0.11);
-    follower.y = lerp(follower.y, cursor.y, 0.11);
-
-    // Atualiza trilha
-    trail.unshift({ x: cursor.x, y: cursor.y, alpha: 1 });
-    if (trail.length > 18) trail.pop();
-
-    // Desenha trilha fluida
-    trail.forEach((p, i) => {
-      p.alpha = lerp(p.alpha, 0, 0.07);
-      const size = lerp(5, 1, i / trail.length);
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(200, 169, 110, ${p.alpha * 0.35})`;
-      ctx.fill();
-    });
-
-    // Círculo externo (follower)
-    const outerR = isHover ? 28 : 18;
-    ctx.beginPath();
-    ctx.arc(follower.x, follower.y, outerR, 0, Math.PI * 2);
-    ctx.strokeStyle = isHover
-      ? 'rgba(200, 169, 110, 0.85)'
-      : 'rgba(200, 169, 110, 0.55)';
-    ctx.lineWidth = isHover ? 2 : 1.2;
-    ctx.stroke();
-
-    // Ponto central (cursor)
-    ctx.beginPath();
-    ctx.arc(cursor.x, cursor.y, 3.5, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(200, 169, 110, 0.9)';
-    ctx.fill();
-
-    requestAnimationFrame(drawFrame);
-  }
-
-  drawFrame();
-}
