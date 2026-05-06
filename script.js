@@ -36,7 +36,8 @@ const LINHAS = [
     desc:    "Limpeza profunda e cuidado especializado para cada tipo de cabelo.",
     cor:     "#DDE8F0",
     emoji:   "🧴",
-    banner:  "images/banner-shampoos.jpeg",
+    icone:   "images/banner-shampoos-agua.png",
+    banner:  "images/banner-shampoos-agua.png",
     produtos: [
       {
         id: 1, nome: "Shampoo E.D.T.A",
@@ -124,7 +125,8 @@ const LINHAS = [
     desc:    "Tratamentos intensivos para recuperar a beleza e saúde dos seus fios.",
     cor:     "#F0DDE8",
     emoji:   "✨",
-    banner:  "images/banner-mascaras.jpeg",
+    icone:   "images/banner-mascaras-rosa.png",
+    banner:  "images/banner-mascaras-rosa.png",
     produtos: [
       {
         id: 24, nome: "Máscara Antioxidante",
@@ -261,7 +263,8 @@ const LINHAS = [
     desc:    "Tecnologia avançada para reconstrução completa dos fios danificados.",
     cor:     "#E8F0DD",
     emoji:   "💎",
-    banner:  "images/banner-tratamento.jpeg",
+    icone:   "images/banner-tratamento-proteina.png",
+    banner:  "images/banner-tratamento-proteina.png",
     produtos: [
       {
         id: 14, nome: "Queratina",
@@ -307,7 +310,8 @@ const LINHAS = [
     desc:    "O toque final perfeito para definição, brilho e proteção dos seus fios.",
     cor:     "#F0E8DD",
     emoji:   "💫",
-    banner:  "images/banner-finalizadores.png",
+    icone:   "images/banner-finalizadores-seda.png",
+    banner:  "images/banner-finalizadores-seda.png",
     produtos: [
       {
         id: 17, nome: "Creme de Pentear",
@@ -361,7 +365,8 @@ const LINHAS = [
     desc:    "Nutrição e brilho incomparáveis com a leveza dos melhores óleos capilares.",
     cor:     "#EEE8D5",
     emoji:   "✦",
-    banner:  "images/banner-oleo.jpeg",
+    icone:   "images/banner-oleo-dourado.png",
+    banner:  "images/banner-oleo-dourado.png",
     produtos: [
       {
         id: 20, nome: "Óleo Bifásico para Escovação",
@@ -385,7 +390,8 @@ const LINHAS = [
     desc:    "Alisamento e selagem para fios lisos, brilhantes e sem frizz duradouros.",
     cor:     "#E8DDF0",
     emoji:   "🌟",
-    banner:  "images/banner-progressivas.jpeg",
+    icone:   "images/banner-progressivas-roxo.png",
+    banner:  "images/banner-progressivas-roxo.png",
     produtos: [
       { id: 21, nome: "Progressiva Orgânica", desc: "Alisamento natural sem formol, com ativos orgânicos",   tamanho: "1 L", preco: 100.00, img: "images/progressiva-organica-1000ml.jpeg" },
       { id: 22, nome: "Progressiva Redutora", desc: "Reduz volume e alinha os fios com efeito duradouro",   tamanho: "1 L", preco: 100.00, img: "images/progressiva-redutora-1000ml.jpeg" },
@@ -398,6 +404,8 @@ const LINHAS = [
     desc:    "Cuidado completo para a pele com ativos de alta performance.",
     cor:     "#DCE8F0",
     emoji:   "🌸",
+    icone:   "images/banner-corporal-creme.png",
+    banner:  "images/banner-corporal.png",
     produtos: [
       { id: 23, nome: "Creme Corporal Hidratante", desc: "Hidratação intensa e nutrição profunda da pele", tamanho: "650 g", preco: 50.00, img: "images/creme-corporal-650g.jpeg" },
     ],
@@ -548,7 +556,9 @@ function buildCarousel() {
   track.innerHTML = getLinhasVisiveis().map(l => `
     <div class="carousel-item" data-id="${l.id}" role="button" tabindex="0" aria-label="Ver linha ${l.nome}">
       <div class="carousel-circle">
-        <span>${l.emoji}</span>
+        ${l.icone
+          ? `<img src="${l.icone}" alt="${l.nome}" class="carousel-circle-img" onerror="this.outerHTML='<span>${l.emoji}</span>'" />`
+          : `<span>${l.emoji}</span>`}
       </div>
       <span class="carousel-label">${l.nome}</span>
     </div>

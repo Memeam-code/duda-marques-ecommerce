@@ -442,6 +442,13 @@ main { padding-top: calc(var(--announce-h) + var(--header-h)); }
   border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(200,169,110,.2);
 }
+.carousel-circle-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
 .carousel-label {
   font-size: .65rem;
   font-weight: 700;
