@@ -228,7 +228,7 @@ const LINHAS = [
         ],
         variantes: [
           { sku: "11-1K",  tamanho: "1 kg",   preco: 80.00, img: "images/mascara-super-reconstrutora-1kg.jpeg" },
-          { sku: "11-650", tamanho: "650 g", preco: 55.00, img: "images/mascara-super-reconstrutora-650g.jpeg" },
+          { sku: "11-650", tamanho: "650 g",  preco: 55.00, img: "images/mascara-super-reconstrutora-650g.jpeg" },
         ]
       },
       {
