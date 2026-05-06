@@ -1487,41 +1487,45 @@ function initGSAP() {
   }
 
   // -- Carrossel de linhas --
-  gsap.from('.carousel-item', {
-    y: 40, opacity: 0, duration: 0.7,
-    stagger: 0.08, ease: 'power2.out',
-    scrollTrigger: {
-      trigger: '.linhas-carousel',
-      start: 'top 85%',
-    },
-  });
+  gsap.fromTo('.carousel-item',
+    { y: 40, opacity: 0 },
+    {
+      y: 0, opacity: 1, duration: 0.7,
+      stagger: 0.08, ease: 'power2.out', clearProps: 'all',
+      scrollTrigger: { trigger: '.linhas-carousel', start: 'top 85%' },
+    }
+  );
 
   // -- Cabeçalho de cada seção de linha --
   document.querySelectorAll('.line-section-header').forEach(el => {
-    gsap.from(el, {
-      x: -60, opacity: 0, duration: 0.9,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 80%' },
-    });
+    gsap.fromTo(el,
+      { x: -60, opacity: 0 },
+      {
+        x: 0, opacity: 1, duration: 0.9,
+        ease: 'power3.out', clearProps: 'all',
+        scrollTrigger: { trigger: el, start: 'top 80%' },
+      }
+    );
   });
 
   // -- Cards de produto: entram em grid escalonado --
   document.querySelectorAll('.products-grid').forEach(grid => {
     const cards = grid.querySelectorAll('.product-card');
-    gsap.from(cards, {
-      y: 60, opacity: 0, duration: 0.75,
-      stagger: 0.1, ease: 'power2.out',
-      scrollTrigger: {
-        trigger: grid,
-        start: 'top 82%',
-      },
-    });
+    gsap.fromTo(cards,
+      { y: 60, opacity: 0 },
+      {
+        y: 0, opacity: 1, duration: 0.75,
+        stagger: 0.1, ease: 'power2.out', clearProps: 'all',
+        scrollTrigger: { trigger: grid, start: 'top 82%' },
+      }
+    );
   });
 
   // -- Bottom bar: sobe ao entrar na tela --
-  gsap.from('.bottom-bar', {
-    y: 44, duration: 0.6, ease: 'power2.out', delay: 1.2,
-  });
+  gsap.fromTo('.bottom-bar',
+    { y: 44, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', delay: 1.2, clearProps: 'all' }
+  );
 
   // -- WhatsApp float: pulsa suave (infinito) --
   const waBtn = document.getElementById('wa-float');
