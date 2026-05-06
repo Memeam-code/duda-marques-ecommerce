@@ -6,7 +6,7 @@
   <title id="page-title">DUDA MARQUES</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
@@ -25,8 +25,31 @@
       <!-- Logo -->
       <div class="header-logo">
         <a href="#" class="logo-link">
-          <span class="logo-name" id="logo-name">DUDA MARQUES</span>
-          <span class="logo-sub">COSMÉTICOS PROFISSIONAIS</span>
+          <svg class="logo-butterfly" width="28" height="24" viewBox="0 0 60 52" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="bf-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#A8893A"/>
+                <stop offset="1" stop-color="#C8A96E"/>
+              </linearGradient>
+            </defs>
+            <!-- corpo -->
+            <ellipse cx="30" cy="26" rx="1.2" ry="14" fill="#2C1A0E"/>
+            <circle cx="30" cy="11" r="2" fill="#2C1A0E"/>
+            <line x1="30" y1="9" x2="27" y2="4" stroke="#2C1A0E" stroke-width="0.8" stroke-linecap="round"/>
+            <line x1="30" y1="9" x2="33" y2="4" stroke="#2C1A0E" stroke-width="0.8" stroke-linecap="round"/>
+            <!-- asas -->
+            <path d="M29 18 Q14 8 6 18 Q4 28 18 28 Q26 26 29 22 Z" fill="url(#bf-grad)" opacity="0.92"/>
+            <path d="M29 28 Q18 32 12 42 Q18 46 26 40 Q29 34 29 30 Z" fill="url(#bf-grad)" opacity="0.78"/>
+            <path d="M31 18 Q46 8 54 18 Q56 28 42 28 Q34 26 31 22 Z" fill="url(#bf-grad)" opacity="0.92"/>
+            <path d="M31 28 Q42 32 48 42 Q42 46 34 40 Q31 34 31 30 Z" fill="url(#bf-grad)" opacity="0.78"/>
+            <!-- detalhes -->
+            <circle cx="16" cy="20" r="1.4" fill="#fafaf8" opacity="0.6"/>
+            <circle cx="44" cy="20" r="1.4" fill="#fafaf8" opacity="0.6"/>
+          </svg>
+          <div class="logo-text-wrap">
+            <span class="logo-name" id="logo-name">Duda Marques</span>
+            <span class="logo-sub">COSMÉTICOS · PROFISSIONAL</span>
+          </div>
         </a>
       </div>
 

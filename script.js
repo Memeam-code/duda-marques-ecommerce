@@ -51,7 +51,7 @@ const LINHAS = [
         ],
         variantes: [
           { sku: "1-1L",   tamanho: "1 L",    preco: 50.00, img: "images/shampoo-edta-1L.jpeg" },
-          { sku: "1-300",  tamanho: "300 ml", preco: 25.00, img: "images/shampoo-edta-300ml.jpeg" },
+          { sku: "1-300",  tamanho: "300 ml", preco: 25.00, img: "images/shampoo-edta-300ml-v2.jpeg" },
         ]
       },
       {
