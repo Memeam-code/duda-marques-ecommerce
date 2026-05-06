@@ -111,9 +111,7 @@ input, select, textarea {
    ANNOUNCEMENT BAR
    ============================================================ */
 .announcement-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   height: var(--announce-h);
   background: var(--dark);
@@ -143,9 +141,7 @@ input, select, textarea {
    HEADER
    ============================================================ */
 .header {
-  position: fixed;
-  top: var(--announce-h);
-  left: 0;
+  position: relative;
   width: 100%;
   z-index: 900;
   background: var(--white);
@@ -326,9 +322,9 @@ input, select, textarea {
 .mobile-nav-list li a:hover { color: var(--primary); background: #FDF9F4; }
 
 /* ============================================================
-   PAGE OFFSET (sticky header)
+   PAGE OFFSET (sticky header removido — header agora é estático)
    ============================================================ */
-main { padding-top: calc(var(--announce-h) + var(--header-h)); }
+main { padding-top: 0; }
 
 /* ============================================================
    HERO
@@ -1790,7 +1786,7 @@ body { padding-bottom: 44px; }
 @media (max-width: 768px) {
   :root { --header-h: 64px; --announce-h: 32px; }
 
-  main { padding-top: calc(var(--announce-h) + var(--header-h)); }
+  main { padding-top: 0; }
 
   .hamburger { display: flex; }
   .main-nav { display: none; }
