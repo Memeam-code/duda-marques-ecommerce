@@ -8,6 +8,7 @@ const CONFIG = {
   SLOGAN:          "COSMÉTICOS PROFISSIONAIS",
   WHATSAPP:        "5521985873917",      // número com DDI
   WHATSAPP_DISPLAY:"(21) 98587-3917",
+  WHATSAPP_MSG:    "Olá! Tenho interesse nos produtos Duda Marques e gostaria de mais informações.",
   FRETE_PAC:       19.90,
   FRETE_SEDEX:     39.90,
   FRETE_GRATIS:    299,                  // valor mínimo p/ frete grátis
@@ -504,7 +505,9 @@ function initSupabase() {
 }
 
 function applyConfig() {
-  const whatsLink = `https://wa.me/${CONFIG.WHATSAPP}`;
+  const msgEncoded = encodeURIComponent(CONFIG.WHATSAPP_MSG || '');
+  const whatsLink     = `https://wa.me/${CONFIG.WHATSAPP}`;
+  const whatsMsgLink  = `https://wa.me/${CONFIG.WHATSAPP}?text=${msgEncoded}`;
 
   // Texts
   document.title = CONFIG.NOME_LOJA;
@@ -517,14 +520,14 @@ function applyConfig() {
   document.getElementById('footer-copy').textContent =
     `© ${CONFIG.ANO_COPY} ${CONFIG.NOME_LOJA} · Todos os direitos reservados`;
 
-  // WhatsApp links
-  document.querySelectorAll('[href="https://wa.me/5521985873917"]').forEach(el => {
-    el.href = whatsLink;
+  // WhatsApp links — com mensagem pré-preenchida em todos os pontos de contato
+  document.querySelectorAll('[href^="https://wa.me/"]').forEach(el => {
+    el.href = whatsMsgLink;
   });
   const fwEl = document.getElementById('wa-float');
-  if (fwEl) fwEl.href = whatsLink;
+  if (fwEl) fwEl.href = whatsMsgLink;
   const ftWa = document.getElementById('footer-whatsapp');
-  if (ftWa) { ftWa.href = whatsLink; ftWa.textContent = CONFIG.WHATSAPP_DISPLAY; }
+  if (ftWa) { ftWa.href = whatsMsgLink; ftWa.textContent = CONFIG.WHATSAPP_DISPLAY; }
 
   // Frete — preços não exibidos; calculados pelo vendedor
 
